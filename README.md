@@ -12,6 +12,7 @@ https://datasets.imdbws.com/
 
 # Load Data into MySQL database method: 
 Since we have TSV files from IMDB, we choose to use python to load the tables into our MySQL database. 
+We use sqlalchemy engine to connect to local mathine
 Details in 'Load_Data_From_TSV.py'
 
 # Accessing the loaded data:
