@@ -1,2 +1,17 @@
-# CS338_project
-SQL Project for CS338
+# IMDB TV Show Movie System
+
+# Contributors
+Henry Sun
+Alan Fang
+Rain Wang
+Ruby Fang
+Lambert Tao
+
+# Data Source
+https://datasets.imdbws.com/
+
+# Load Data into MySQL database method: 
+Since we have TSV files from IMDB, we choose to use python to load the tables into our MySQL database. 
+Details in 'Load_Data_From_TSV.py'
+
+# Accessing the loaded data:
