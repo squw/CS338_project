@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from urllib.parse import quote
 
-# Create a password.env to store password: file has one line: PASSWORD = "your_password"
+# Create a password.env to store password
 # This line loads the env file created
 load_dotenv(r'C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\password.env')
 
-# MySQL Creds, change to your own if necessary
+# MySQL Creds
 host = "localhost"
 username = "root"
 password = os.getenv('MY_PASSWORD')
@@ -18,13 +18,13 @@ database_name = "imdb_data"
 # Tables to add
 table_names = ["name_basics", "title_akas", "title_basics", "title_crew", "title_episode", "title_pricipals", "title_ratings"]
 # Paths for the tsv files
-file_paths = [r"your_path_to_name.basics.tsv", 
-              r"your_path_to_title.akas.tsv", 
-              r"your_path_to_title.basics.tsv", 
-              r"your_path_to_title.crew.tsv", 
-              r"your_path_to_title.episode.tsv", 
-              r"your_path_to_title.principals.tsv", 
-              r"your_path_to_title.ratings.tsv"]
+file_paths = [r"C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\name.basics.tsv", 
+              r"C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\title.akas.tsv", 
+              r"C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\title.basics.tsv", 
+              r"C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\title.crew.tsv", 
+              r"C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\title.episode.tsv", 
+              r"C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\title.principals.tsv", 
+              r"C:\Users\squw-\My Drive\uWaterloo\CS 338\Final Project\title.ratings.tsv"]
 
 # Function to load table given the table name and the TSV file path
 def load_table(table_name, file_path): 
