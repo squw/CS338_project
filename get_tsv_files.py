@@ -22,7 +22,7 @@ def download_and_unzip(url, tmp_dir, file_name):
         with open(tsv_file_path, 'wb') as tsv_file:
             shutil.copyfileobj(gz_file, tsv_file)
     
-    # Optionally, you can remove the .gz file after extraction
+    # Remove the .gz file after extraction
     os.remove(gz_file_path)
     
     return tsv_file_path
