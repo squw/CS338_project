@@ -2,9 +2,9 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
-from urllib.parse import quote
+from urllib.parse import quote_plus
 
-# Create a password.env to store password: file has one line: PASSWORD = "your_password"
+# Create a password.env to store password: file has one line: MY_PASSWORD = "your_password"
 # This line loads the env file created
 load_dotenv(r'./password.env')
 
@@ -30,13 +30,13 @@ file_paths = [r"./tmp/name.basics.tsv",
 # Function to load table given the table name and the TSV file path
 def load_table(table_name, file_path): 
     # Read the TSV file (limiting 100 lines for faster testing speed)
-    df = pd.read_csv(file_path, sep='\t', na_values='\\N')
+    df = pd.read_csv(file_path, sep='\t', na_values='\\N', nrows=100)
 
     # Replace NaN with None for SQL NULL values
     df = df.where(pd.notnull(df), None)
 
     # Create SQLAlchemy engine
-    engine = create_engine(f"mysql+pymysql://{quote(username)}:{quote(password)}@{quote(host)}/{quote(database_name)}?charset=utf8mb4")
+    engine = create_engine(f"mysql+pymysql://{quote_plus(username)}:{quote_plus(password)}@{quote_plus(host)}/{quote_plus(database_name)}?charset=utf8mb4")
 
     # Load the DataFrame into the MySQL table
     df.to_sql(table_name, con=engine, if_exists='replace', index=False)
