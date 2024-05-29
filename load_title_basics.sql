@@ -1,4 +1,3 @@
--- Active: 1716922056136@@127.0.0.1@3306@imdb_data_full
 CREATE TABLE IF NOT EXISTS title_basics (
     tconst VARCHAR(255) PRIMARY KEY,
     titleType VARCHAR(255),
