@@ -1,0 +1,25 @@
+-- Active: 1716922056136@@127.0.0.1@3306@imdb_data_full
+CREATE TABLE IF NOT EXISTS title_basics (
+    tconst VARCHAR(255) PRIMARY KEY,
+    titleType VARCHAR(255),
+    primaryTitle VARCHAR(255),
+    originalTitle VARCHAR(255),
+    isAdult INT,
+    startYear INT,
+    endYear INT,
+    runtimeMinutes INT,
+    genres VARCHAR(255)
+);
+
+LOAD DATA LOCAL INFILE 'C:/Users/squw-/OneDrive/Documents/GitHub/IMDB_TV_Show_Movie_System/tmp/title.basics.tsv' INTO
+TABLE title_basics FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (
+    tconst,
+    titleType,
+    primaryTitle,
+    originalTitle,
+    isAdult,
+    startYear,
+    endYear,
+    runtimeMinutes,
+    genres
+);
