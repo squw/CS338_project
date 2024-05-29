@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS title_akas (
     isOriginalTitle INT
 );
 
-LOAD DATA LOCAL INFILE 'C:/Users/squw-/OneDrive/Documents/GitHub/IMDB_TV_Show_Movie_System/tmp/title.akas.tsv' INTO
+LOAD DATA LOCAL INFILE './tmp/title.akas.tsv' INTO
 TABLE title_akas FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (
     titleId,
     ordering,
