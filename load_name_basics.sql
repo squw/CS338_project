@@ -7,9 +7,6 @@ CREATE TABLE IF NOT EXISTS name_basics (
     knownForTitles VARCHAR(255)
 );
 
-SHOW VARIABLES LIKE 'local_infile';
-
-SET GLOBAL local_infile = 1;
 
 LOAD DATA LOCAL INFILE './tmp/name.basics.tsv' INTO
 TABLE name_basics FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (
