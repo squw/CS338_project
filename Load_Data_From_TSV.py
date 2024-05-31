@@ -17,7 +17,7 @@ database_name = "imdb_data"
 
 
 # Tables to add
-table_names = ["name_basics", "title_akas", "title_basics", "title_crew", "title_episode", "title_pricipals", "title_ratings"]
+table_names = ["name_basics", "title_akas", "title_basics", "title_crew", "title_episode", "title_principals", "title_ratings"]
 # Paths for the tsv files
 file_paths = [r"./tmp/name.basics.tsv", 
               r"./tmp/title.akas.tsv", 
