@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS title_crew (
     writers VARCHAR(255)
 );
 
-LOAD DATA LOCAL INFILE './tmp/title.crew.tsv' INTO
+TRUNCATE TABLE title_crew;
+
+LOAD DATA LOCAL INFILE 'file_path' INTO
 TABLE title_crew FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (
     tconst,
     directors,

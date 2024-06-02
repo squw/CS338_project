@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS title_basics (
     genres VARCHAR(255)
 );
 
-LOAD DATA LOCAL INFILE './tmp/title.basics.tsv' INTO
+TRUNCATE TABLE title_basics;
+
+LOAD DATA LOCAL INFILE 'file_path' INTO
 TABLE title_basics FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (
     tconst,
     titleType,

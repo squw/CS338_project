@@ -7,8 +7,9 @@ CREATE TABLE IF NOT EXISTS title_principals (
     characters VARCHAR(255)
 );
 
+TRUNCATE TABLE title_principals;
 
-LOAD DATA LOCAL INFILE './tmp/title.principals.tsv' INTO
+LOAD DATA LOCAL INFILE 'file_path' INTO
 TABLE title_principals FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (
     tconst,
     ordering,
