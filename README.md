@@ -31,6 +31,11 @@ CREATE DATABASE imdb_data_full;
 2. Run 'enable_local_infile.sql' from your db
 3. Run the load table sql queries from your db, change the file path to your own file path
 
+# Updated Load Full Data into MySQL database method (Still in testing):
+CREATE DATABASE imdb_data;
+1. Run 'get_tsv_files.py' to get the tsvs in a tmp folder (do not push this folder and anything inside to repo)
+2. Run 'enable_local_infile.sql' from your db
+3. Run 'load_data_from_tsv_full_test.py'
 
 # Accessing the loaded data:
 configure your own test_access_db.ipynb for your local machine to access the database
