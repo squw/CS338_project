@@ -13,7 +13,7 @@ load_dotenv(r'./password.env')
 host = "localhost"
 username = "root"
 password = os.getenv('MY_PASSWORD')
-database_name = "imdb_data"
+database_name = "imdb_data" # create a imdb_data_full database and switch this to "imdb_data_full" if you have imdb_data pre-loaded from before
 
 # Create connection to MySQL
 engine = create_engine(f"mysql+pymysql://{quote(username)}:{quote(password)}@{quote(host)}/{quote(database_name)}?charset=utf8mb4", connect_args={"local_infile": 1})
