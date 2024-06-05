@@ -1,10 +1,11 @@
 CREATE TABLE IF NOT EXISTS name_basics (
-    nconst VARCHAR(255) PRIMARY KEY,
+    nconst VARCHAR(255),
     primaryName VARCHAR(255),
-    birthYear INT,
-    deathYear INT,
+    birthYear YEAR DEFAULT NULL,
+    deathYear YEAR DEFAULT NULL,
     primaryProfession VARCHAR(255),
-    knownForTitles VARCHAR(255)
+    knownForTitles VARCHAR(255),
+    PRIMARY KEY (nconst)
 );
 
 TRUNCATE TABLE name_basics;

@@ -1,8 +1,9 @@
 CREATE TABLE IF NOT EXISTS title_episode (
-    tconst VARCHAR(255) PRIMARY KEY,
+    tconst VARCHAR(255),
     parentTconst VARCHAR(255),
     seasonNumber INT,
-    episodeNumber INT
+    episodeNumber INT,
+    PRIMARY KEY (tconst, parentTconst)
 );
 
 TRUNCATE TABLE title_episode;

@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS title_ratings (
-    tconst VARCHAR(255) PRIMARY KEY,
-    averageRating DOUBLE,
-    numVotes INT
+    tconst VARCHAR(255),
+    averageRating FLOAT,
+    numVotes INT,
+    PRIMARY KEY (tconst)
 );
 
 TRUNCATE TABLE title_ratings;

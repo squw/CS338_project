@@ -1,10 +1,11 @@
 CREATE TABLE IF NOT EXISTS title_principals (
-    tconst VARCHAR(255) PRIMARY KEY,
+    tconst VARCHAR(255),
     ordering INT,
     nconst VARCHAR(255),
     category VARCHAR(255),
     job VARCHAR(255),
-    characters VARCHAR(255)
+    characters VARCHAR(255),
+    PRIMARY KEY (tconst, ordering)
 );
 
 TRUNCATE TABLE title_principals;

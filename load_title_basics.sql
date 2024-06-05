@@ -1,13 +1,14 @@
 CREATE TABLE IF NOT EXISTS title_basics (
-    tconst VARCHAR(255) PRIMARY KEY,
+    tconst VARCHAR(255),
     titleType VARCHAR(255),
     primaryTitle VARCHAR(255),
     originalTitle VARCHAR(255),
-    isAdult INT,
-    startYear INT,
-    endYear INT,
+    isAdult BOOLEAN,
+    startYear YEAR DEFAULT NULL,
+    endYear YEAR DEFAULT NULL,
     runtimeMinutes INT,
-    genres VARCHAR(255)
+    genres VARCHAR(255),
+    PRIMARY KEY (tconst)
 );
 
 TRUNCATE TABLE title_basics;
