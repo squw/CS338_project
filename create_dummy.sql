@@ -590,7 +590,7 @@ CREATE TABLE title_episode (
     parentTconst VARCHAR(255),
     seasonNumber INT,
     episodeNumber INT,
-    PRIMARY KEY (tconst)
+    PRIMARY KEY (tconst, parentTconst)
 );
 
 -- Insert dummy entries into title_episode
