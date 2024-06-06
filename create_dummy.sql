@@ -1,5 +1,21 @@
+-- Active: 1716922056136@@127.0.0.1@3306@imdb_dummy
+-- Truncate all tables
+TRUNCATE TABLE name_basics;
+
+TRUNCATE TABLE title_akas;
+
+TRUNCATE TABLE title_basics;
+
+TRUNCATE TABLE title_crew;
+
+TRUNCATE TABLE title_episode;
+
+TRUNCATE TABLE title_principals;
+
+TRUNCATE TABLE title_ratings;
+
 -- Create table for title.akas.tsv.gz
-CREATE TABLE title_akas (
+CREATE TABLE IF NOT EXISTS title_akas (
     titleId VARCHAR(255),
     ordering INT,
     title VARCHAR(255),
@@ -34,6 +50,16 @@ VALUES (
         1
     ),
     (
+        'tt0000001',
+        2,
+        'Alternate Title 1',
+        'UK',
+        'en',
+        'dvd',
+        'attribute2',
+        0
+    ),
+    (
         'tt0000002',
         1,
         'Localized Title 2',
@@ -42,6 +68,16 @@ VALUES (
         'dvd',
         'attribute2',
         0
+    ),
+    (
+        'tt0000002',
+        2,
+        'Alternate Title 2',
+        'BE',
+        'fr',
+        'festival',
+        'attribute3',
+        1
     ),
     (
         'tt0000003',
@@ -54,6 +90,16 @@ VALUES (
         1
     ),
     (
+        'tt0000003',
+        2,
+        'Alternate Title 3',
+        'AT',
+        'de',
+        'tv',
+        'attribute4',
+        0
+    ),
+    (
         'tt0000004',
         1,
         'Localized Title 4',
@@ -62,6 +108,16 @@ VALUES (
         'tv',
         'attribute4',
         0
+    ),
+    (
+        'tt0000004',
+        2,
+        'Alternate Title 4',
+        'JP',
+        'ja',
+        'video',
+        'attribute5',
+        1
     ),
     (
         'tt0000005',
@@ -74,6 +130,16 @@ VALUES (
         1
     ),
     (
+        'tt0000005',
+        2,
+        'Alternate Title 5',
+        'IN',
+        'en',
+        'working',
+        'attribute6',
+        0
+    ),
+    (
         'tt0000006',
         1,
         'Localized Title 6',
@@ -82,6 +148,16 @@ VALUES (
         'working',
         'attribute6',
         0
+    ),
+    (
+        'tt0000006',
+        2,
+        'Alternate Title 6',
+        'ES',
+        'ca',
+        'original',
+        'attribute7',
+        1
     ),
     (
         'tt0000007',
@@ -94,6 +170,16 @@ VALUES (
         1
     ),
     (
+        'tt0000007',
+        2,
+        'Alternate Title 7',
+        'HK',
+        'zh',
+        'imdbDisplay',
+        'attribute8',
+        0
+    ),
+    (
         'tt0000008',
         1,
         'Localized Title 8',
@@ -102,6 +188,16 @@ VALUES (
         'imdbDisplay',
         'attribute8',
         0
+    ),
+    (
+        'tt0000008',
+        2,
+        'Alternate Title 8',
+        'CH',
+        'it',
+        'alternative',
+        'attribute9',
+        1
     ),
     (
         'tt0000009',
@@ -114,6 +210,16 @@ VALUES (
         1
     ),
     (
+        'tt0000009',
+        2,
+        'Alternate Title 9',
+        'KR',
+        'en',
+        'dvd',
+        'attribute10',
+        0
+    ),
+    (
         'tt0000010',
         1,
         'Localized Title 10',
@@ -122,6 +228,16 @@ VALUES (
         'dvd',
         'attribute10',
         0
+    ),
+    (
+        'tt0000010',
+        2,
+        'Alternate Title 10',
+        'BY',
+        'ru',
+        'festival',
+        'attribute11',
+        1
     ),
     (
         'tt0000011',
@@ -134,6 +250,16 @@ VALUES (
         1
     ),
     (
+        'tt0000011',
+        2,
+        'Alternate Title 11',
+        'PT',
+        'pt',
+        'tv',
+        'attribute12',
+        0
+    ),
+    (
         'tt0000012',
         1,
         'Localized Title 12',
@@ -142,6 +268,16 @@ VALUES (
         'tv',
         'attribute12',
         0
+    ),
+    (
+        'tt0000012',
+        2,
+        'Alternate Title 12',
+        'CA',
+        'en',
+        'video',
+        'attribute13',
+        1
     ),
     (
         'tt0000013',
@@ -154,6 +290,16 @@ VALUES (
         1
     ),
     (
+        'tt0000013',
+        2,
+        'Alternate Title 13',
+        'NZ',
+        'en',
+        'working',
+        'attribute14',
+        0
+    ),
+    (
         'tt0000014',
         1,
         'Localized Title 14',
@@ -162,6 +308,16 @@ VALUES (
         'working',
         'attribute14',
         0
+    ),
+    (
+        'tt0000014',
+        2,
+        'Alternate Title 14',
+        'NO',
+        'no',
+        'original',
+        'attribute15',
+        1
     ),
     (
         'tt0000015',
@@ -174,6 +330,16 @@ VALUES (
         1
     ),
     (
+        'tt0000015',
+        2,
+        'Alternate Title 15',
+        'BE',
+        'nl',
+        'imdbDisplay',
+        'attribute16',
+        0
+    ),
+    (
         'tt0000016',
         1,
         'Localized Title 16',
@@ -182,6 +348,16 @@ VALUES (
         'imdbDisplay',
         'attribute16',
         0
+    ),
+    (
+        'tt0000016',
+        2,
+        'Alternate Title 16',
+        'LU',
+        'fr',
+        'alternative',
+        'attribute17',
+        1
     ),
     (
         'tt0000017',
@@ -194,6 +370,16 @@ VALUES (
         1
     ),
     (
+        'tt0000017',
+        2,
+        'Alternate Title 17',
+        'UY',
+        'es',
+        'dvd',
+        'attribute18',
+        0
+    ),
+    (
         'tt0000018',
         1,
         'Localized Title 18',
@@ -202,6 +388,16 @@ VALUES (
         'dvd',
         'attribute18',
         0
+    ),
+    (
+        'tt0000018',
+        2,
+        'Alternate Title 18',
+        'NA',
+        'en',
+        'festival',
+        'attribute19',
+        1
     ),
     (
         'tt0000019',
@@ -214,6 +410,16 @@ VALUES (
         1
     ),
     (
+        'tt0000019',
+        2,
+        'Alternate Title 19',
+        'GH',
+        'en',
+        'tv',
+        'attribute20',
+        0
+    ),
+    (
         'tt0000020',
         1,
         'Localized Title 20',
@@ -222,10 +428,20 @@ VALUES (
         'tv',
         'attribute20',
         0
+    ),
+    (
+        'tt0000020',
+        2,
+        'Alternate Title 20',
+        'SA',
+        'ar',
+        'video',
+        'attribute1',
+        1
     );
 
 -- Create table for title.basics.tsv.gz
-CREATE TABLE title_basics (
+CREATE TABLE IF NOT EXISTS title_basics (
     tconst VARCHAR(255),
     titleType VARCHAR(255),
     primaryTitle VARCHAR(255),
@@ -473,7 +689,7 @@ VALUES (
     );
 
 -- Create table for title.crew.tsv.gz
-CREATE TABLE title_crew (
+CREATE TABLE IF NOT EXISTS title_crew (
     tconst VARCHAR(255),
     directors VARCHAR(255),
     writers VARCHAR(255),
@@ -485,7 +701,7 @@ INSERT INTO
     title_crew (tconst, directors, writers)
 VALUES (
         'tt0000001',
-        'nm0000001',
+        'nm0000001,nm0000002',
         'nm0000002'
     ),
     (
@@ -495,7 +711,7 @@ VALUES (
     ),
     (
         'tt0000003',
-        'nm0000005',
+        'nm0000005,nm0000006',
         'nm0000006'
     ),
     (
@@ -505,7 +721,7 @@ VALUES (
     ),
     (
         'tt0000005',
-        'nm0000009',
+        'nm0000009,nm0000010',
         'nm0000010'
     ),
     (
@@ -515,7 +731,7 @@ VALUES (
     ),
     (
         'tt0000007',
-        'nm0000013',
+        'nm0000013,nm0000014',
         'nm0000014'
     ),
     (
@@ -525,7 +741,7 @@ VALUES (
     ),
     (
         'tt0000009',
-        'nm0000017',
+        'nm0000017,nm0000018',
         'nm0000018'
     ),
     (
@@ -535,57 +751,57 @@ VALUES (
     ),
     (
         'tt0000011',
-        'nm0000021',
-        'nm0000022'
+        'nm0000001',
+        'nm0000002'
     ),
     (
         'tt0000012',
-        'nm0000023',
-        'nm0000024'
+        'nm0000003,nm0000004',
+        'nm0000004'
     ),
     (
         'tt0000013',
-        'nm0000025',
-        'nm0000026'
+        'nm0000005',
+        'nm0000006'
     ),
     (
         'tt0000014',
-        'nm0000027',
-        'nm0000028'
+        'nm0000007,nm0000008',
+        'nm0000008'
     ),
     (
         'tt0000015',
-        'nm0000029',
-        'nm0000030'
+        'nm0000009',
+        'nm0000010'
     ),
     (
         'tt0000016',
-        'nm0000031',
-        'nm0000032'
+        'nm0000011,nm0000012',
+        'nm0000012'
     ),
     (
         'tt0000017',
-        'nm0000033',
-        'nm0000034'
+        'nm0000013',
+        'nm0000014'
     ),
     (
         'tt0000018',
-        'nm0000035',
-        'nm0000036'
+        'nm0000015,nm0000016',
+        'nm0000016'
     ),
     (
         'tt0000019',
-        'nm0000037',
-        'nm0000038'
+        'nm0000017',
+        'nm0000018'
     ),
     (
         'tt0000020',
-        'nm0000039',
-        'nm0000040'
+        'nm0000019,nm0000020',
+        'nm0000020'
     );
 
 -- Create table for title.episode.tsv.gz
-CREATE TABLE title_episode (
+CREATE TABLE IF NOT EXISTS title_episode (
     tconst VARCHAR(255),
     parentTconst VARCHAR(255),
     seasonNumber INT,
@@ -602,128 +818,38 @@ INSERT INTO
         episodeNumber
     )
 VALUES (
-        'tt0000101',
-        'tt0000002',
+        'tt0000016',
+        'tt0000017',
         1,
         1
     ),
     (
-        'tt0000102',
-        'tt0000002',
+        'tt0000018',
+        'tt0000017',
         1,
         2
     ),
     (
-        'tt0000103',
-        'tt0000002',
+        'tt0000019',
+        'tt0000017',
         1,
         3
     ),
     (
-        'tt0000104',
-        'tt0000002',
+        'tt0000020',
+        'tt0000017',
         1,
         4
     ),
     (
-        'tt0000105',
-        'tt0000002',
+        'tt0000020',
+        'tt0000018',
         2,
         1
-    ),
-    (
-        'tt0000106',
-        'tt0000002',
-        2,
-        2
-    ),
-    (
-        'tt0000107',
-        'tt0000002',
-        2,
-        3
-    ),
-    (
-        'tt0000108',
-        'tt0000002',
-        2,
-        4
-    ),
-    (
-        'tt0000109',
-        'tt0000002',
-        3,
-        1
-    ),
-    (
-        'tt0000110',
-        'tt0000002',
-        3,
-        2
-    ),
-    (
-        'tt0000111',
-        'tt0000002',
-        3,
-        3
-    ),
-    (
-        'tt0000112',
-        'tt0000002',
-        3,
-        4
-    ),
-    (
-        'tt0000113',
-        'tt0000002',
-        4,
-        1
-    ),
-    (
-        'tt0000114',
-        'tt0000002',
-        4,
-        2
-    ),
-    (
-        'tt0000115',
-        'tt0000002',
-        4,
-        3
-    ),
-    (
-        'tt0000116',
-        'tt0000002',
-        4,
-        4
-    ),
-    (
-        'tt0000117',
-        'tt0000002',
-        5,
-        1
-    ),
-    (
-        'tt0000118',
-        'tt0000002',
-        5,
-        2
-    ),
-    (
-        'tt0000119',
-        'tt0000002',
-        5,
-        3
-    ),
-    (
-        'tt0000120',
-        'tt0000002',
-        5,
-        4
     );
 
 -- Create table for title.principals.tsv.gz
-CREATE TABLE title_principals (
+CREATE TABLE IF NOT EXISTS title_principals (
     tconst VARCHAR(255),
     ordering INT,
     nconst VARCHAR(255),
@@ -757,7 +883,7 @@ VALUES (
         'nm0000002',
         'director',
         'Director',
-        '\N'
+        NULL
     ),
     (
         'tt0000003',
@@ -765,7 +891,7 @@ VALUES (
         'nm0000003',
         'writer',
         'Writer',
-        '\N'
+        NULL
     ),
     (
         'tt0000004',
@@ -781,7 +907,7 @@ VALUES (
         'nm0000005',
         'producer',
         'Producer',
-        '\N'
+        NULL
     ),
     (
         'tt0000006',
@@ -797,7 +923,7 @@ VALUES (
         'nm0000007',
         'director',
         'Director',
-        '\N'
+        NULL
     ),
     (
         'tt0000008',
@@ -805,7 +931,7 @@ VALUES (
         'nm0000008',
         'writer',
         'Writer',
-        '\N'
+        NULL
     ),
     (
         'tt0000009',
@@ -821,7 +947,7 @@ VALUES (
         'nm0000010',
         'producer',
         'Producer',
-        '\N'
+        NULL
     ),
     (
         'tt0000011',
@@ -837,7 +963,7 @@ VALUES (
         'nm0000012',
         'director',
         'Director',
-        '\N'
+        NULL
     ),
     (
         'tt0000013',
@@ -845,7 +971,7 @@ VALUES (
         'nm0000013',
         'writer',
         'Writer',
-        '\N'
+        NULL
     ),
     (
         'tt0000014',
@@ -861,7 +987,7 @@ VALUES (
         'nm0000015',
         'producer',
         'Producer',
-        '\N'
+        NULL
     ),
     (
         'tt0000016',
@@ -877,7 +1003,7 @@ VALUES (
         'nm0000017',
         'director',
         'Director',
-        '\N'
+        NULL
     ),
     (
         'tt0000018',
@@ -885,7 +1011,7 @@ VALUES (
         'nm0000018',
         'writer',
         'Writer',
-        '\N'
+        NULL
     ),
     (
         'tt0000019',
@@ -901,11 +1027,11 @@ VALUES (
         'nm0000020',
         'producer',
         'Producer',
-        '\N'
+        NULL
     );
 
 -- Create table for title.ratings.tsv.gz
-CREATE TABLE title_ratings (
+CREATE TABLE IF NOT EXISTS title_ratings (
     tconst VARCHAR(255),
     averageRating FLOAT,
     numVotes INT,
@@ -940,8 +1066,7 @@ VALUES ('tt0000001', 7.5, 1500),
     ('tt0000019', 7.3, 1400),
     ('tt0000020', 8.9, 4500);
 
--- Create table for name.basics.tsv.gz
-CREATE TABLE name_basics (
+CREATE TABLE IF NOT EXISTS name_basics (
     nconst VARCHAR(255),
     primaryName VARCHAR(255),
     birthYear YEAR DEFAULT NULL,
@@ -951,7 +1076,6 @@ CREATE TABLE name_basics (
     PRIMARY KEY (nconst)
 );
 
--- Insert dummy entries into name_basics
 INSERT INTO
     name_basics (
         nconst,
@@ -966,158 +1090,158 @@ VALUES (
         'Person One',
         1970,
         2010,
-        'Actor,Producer',
-        'tt0000001,tt0000002'
+        'actor,miscellaneous,producer',
+        'tt0000001,tt0000002,tt0000003'
     ),
     (
         'nm0000002',
         'Person Two',
         1980,
         NULL,
-        'Director,Writer',
-        'tt0000002,tt0000003'
+        'actress,music_department,producer',
+        'tt0000002,tt0000003,tt0000001'
     ),
     (
         'nm0000003',
         'Person Three',
         1965,
         2020,
-        'Writer,Producer',
-        'tt0000003,tt0000004'
+        'actor,writer,music_department',
+        'tt0000003,tt0000004,tt0000002'
     ),
     (
         'nm0000004',
         'Person Four',
         1975,
         NULL,
-        'Actor,Director',
-        'tt0000004,tt0000005'
+        'writer,director,actor',
+        'tt0000004,tt0000005,tt0000001'
     ),
     (
         'nm0000005',
         'Person Five',
         1985,
         NULL,
-        'Producer,Actor',
-        'tt0000005,tt0000006'
+        'actress,producer,soundtrack',
+        'tt0000005,tt0000006,tt0000002'
     ),
     (
         'nm0000006',
         'Person Six',
         1990,
         NULL,
-        'Actor,Writer',
-        'tt0000006,tt0000007'
+        'actor,producer,miscellaneous',
+        'tt0000006,tt0000007,tt0000004'
     ),
     (
         'nm0000007',
         'Person Seven',
         1972,
         2015,
-        'Director,Producer',
-        'tt0000007,tt0000008'
+        'actor,director,writer',
+        'tt0000007,tt0000008,tt0000003'
     ),
     (
         'nm0000008',
         'Person Eight',
         1988,
         NULL,
-        'Writer,Actor',
-        'tt0000008,tt0000009'
+        'actor,producer,director',
+        'tt0000008,tt0000009,tt0000005'
     ),
     (
         'nm0000009',
         'Person Nine',
         1968,
         2018,
-        'Actor,Director',
-        'tt0000009,tt0000010'
+        'actor,director,producer',
+        'tt0000009,tt0000010,tt0000015'
     ),
     (
         'nm0000010',
         'Person Ten',
         1979,
         NULL,
-        'Producer,Writer',
-        'tt0000010,tt0000011'
+        'actor,stunts,producer',
+        'tt0000010,tt0000011,tt0000011'
     ),
     (
         'nm0000011',
         'Person Eleven',
         1982,
         NULL,
-        'Actor,Producer',
-        'tt0000011,tt0000012'
+        'actor,producer,writer',
+        'tt0000011,tt0000012,tt0000010'
     ),
     (
         'nm0000012',
         'Person Twelve',
         1976,
         NULL,
-        'Director,Writer',
-        'tt0000012,tt0000013'
+        'director,writer,producer',
+        'tt0000012,tt0000013,tt0000011'
     ),
     (
         'nm0000013',
         'Person Thirteen',
         1967,
         2019,
-        'Writer,Actor',
-        'tt0000013,tt0000014'
+        'writer,actor,producer',
+        'tt0000013,tt0000014,tt0000012'
     ),
     (
         'nm0000014',
         'Person Fourteen',
         1983,
         NULL,
-        'Actor,Director',
-        'tt0000014,tt0000015'
+        'actor,director,writer',
+        'tt0000014,tt0000015,tt0000013'
     ),
     (
         'nm0000015',
         'Person Fifteen',
         1991,
         NULL,
-        'Producer,Actor',
-        'tt0000015,tt0000016'
+        'producer,actor,director',
+        'tt0000015,tt0000016,tt0000014'
     ),
     (
         'nm0000016',
         'Person Sixteen',
         1974,
         NULL,
-        'Actor,Writer',
-        'tt0000016,tt0000017'
+        'actor,writer,producer',
+        'tt0000016,tt0000017,tt0000015'
     ),
     (
         'nm0000017',
         'Person Seventeen',
         1981,
         NULL,
-        'Director,Producer',
-        'tt0000017,tt0000018'
+        'director,producer,writer',
+        'tt0000017,tt0000018,tt0000016'
     ),
     (
         'nm0000018',
         'Person Eighteen',
         1993,
         NULL,
-        'Writer,Actor',
-        'tt0000018,tt0000019'
+        'writer,actor,producer',
+        'tt0000018,tt0000019,tt0000017'
     ),
     (
         'nm0000019',
         'Person Nineteen',
         1973,
         NULL,
-        'Actor,Director',
-        'tt0000019,tt0000020'
+        'actor,director,writer',
+        'tt0000019,tt0000020,tt0000018'
     ),
     (
         'nm0000020',
         'Person Twenty',
         1987,
         NULL,
-        'Producer,Writer',
-        'tt0000020,tt0000021'
+        'producer,writer,director',
+        'tt0000020,tt0000021,tt0000019'
     );
