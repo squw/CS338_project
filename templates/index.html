@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMDb Data</title>
+    <script src="{{ url_for('static', filename='sample1.js') }}"></script>
+  </head>
+  <body>
+    <h2>Title Crew 5 Rows</h2>
+    <button onclick="fetchData()">Load Data</button>
+    <table border="1" id="titleCrewTable5R">
+      <tr>
+        <th>tconst</th>
+        <th>directors</th>
+        <th>writers</th>
+      </tr>
+    </table>
+  </body>
+</html>
