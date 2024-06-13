@@ -11,7 +11,7 @@ db = mysql.connect(
     host="localhost",
     user="root",
     password=os.getenv('MY_PASSWORD'),
-    database="imdb_data"
+    database="imdb_dummy"
 )
 
 cursor = db.cursor(dictionary=True)
@@ -19,12 +19,6 @@ cursor = db.cursor(dictionary=True)
 def get_samples():
     load_dotenv(r'./password.env')
 
-    db = mysql.connect(
-        host="localhost",
-        user="root",
-        password=os.getenv('MY_PASSWORD'),
-        database="imdb_data"
-    )
 
     cursor = db.cursor(dictionary=True)
 

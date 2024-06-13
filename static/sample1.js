@@ -4,10 +4,6 @@ function fetchData() {
         .then(data => {
             let tableBody = document.querySelector('#titleCrewTable5R tbody');
             
-            // Clear existing table rows
-            while (tableBody.firstChild) {
-                tableBody.removeChild(tableBody.firstChild);
-            }
 
             // Insert new data
             data.forEach(sample => {
