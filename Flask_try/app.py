@@ -25,20 +25,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class TitleAkas(db.Model):
-    __tablename__ = 'title_akas'
-    titleId = db.Column(db.String(255), primary_key=True)
-    ordering = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255))
-    region = db.Column(db.String(255))
-    language = db.Column(db.String(255))
-    types = db.Column(db.String(255))
-    attributes = db.Column(db.String(255))
-    isOriginalTitle = db.Column(db.Boolean)
-    
-    def __repr__(self):
-        return '<Task %r>' % self.id
-
 @app.route('/')
 def index():
     return render_template("index.html")
