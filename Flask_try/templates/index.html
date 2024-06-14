@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+<!--block for head-->
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+<!--block for body-->
+{% block body %}
+<h1>Home Page</h1>
+<a href="{{  url_for('show_title_akas') }}">View Title Akas</a>
+{% endblock %}
