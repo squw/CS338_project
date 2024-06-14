@@ -17,9 +17,6 @@ db = mysql.connect(
 cursor = db.cursor(dictionary=True)
 
 def get_samples():
-    load_dotenv(r'./password.env')
-
-
     cursor = db.cursor(dictionary=True)
 
     sample_query = "SELECT * FROM title_crew LIMIT 5"
