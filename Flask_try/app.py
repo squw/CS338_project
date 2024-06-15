@@ -14,7 +14,7 @@ load_dotenv(r'./password.env')
 host = "localhost"
 username = "root"
 password = os.getenv('MY_PASSWORD')
-database_name = "imdb_data"
+database_name = "imdb_dummy"
 
 
 
