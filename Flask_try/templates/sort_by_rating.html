@@ -8,19 +8,19 @@
 <!--block for body-->
 {% block body %}
 <div class="content">
-  <h1>Title Akas</h1>
+  <h1>Sort By Rating</h1>
 
   <table>
     <tr>
+      <th>Title</th>
       <th>Average Rating</th>
       <th>Number of Votes</th>
-      <th>Title</th>
     </tr>
     {% for entry in sorted_table %}
     <tr>
+      <td>{{ entry[2] }}</td>
       <td>{{ entry[0] }}</td>
       <td>{{ entry[1] }}</td>
-      <td>{{ entry[2] }}</td>
     </tr>
     {% endfor %}
   </table>
