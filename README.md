@@ -12,19 +12,20 @@ Lambert Tao
 
 https://datasets.imdbws.com/
 
-# Load Data into MySQL database method:
+# Load Dummy Data into MySQL database method:
 
-First we create a database named `imdb_data` using the command:
-`CREATE DATABASE imdb_data;`
+1. First we create a database named `imdb_dummy` using the command: `CREATE DATABASE imdb_dummy;`
+2. Then we go inside `SQL` folder and find `create_dummy.sql`, run it full and you will get the dummy sample db
 
-Since we have TSV files from IMDB, we choose to use python to load the tables into our MySQL database.
-We use sqlalchemy engine to connect to local mathine
-Details in `Load_Data_From_TSV.py`
-Note: this i only loads 100 rows for each table as it takes up too much resource to load the full data with this method
+
+
+# Updated Load Full Data into MySQL database method (Still in testing):
+
+CREATE DATABASE imdb_data;
 
 1. Run `get_tsv_files.py` to get the tsvs in a tmp folder (do not push this folder and anything inside to repo)
-2. Configure your own password.env as described in `Load_Data_From_TSV.py`
-3. Run `Load_Data_From_TSV.py` to load all the data into your local database
+2. Run `enable_local_infile.sql` from your db
+3. Run `load_data_from_tsv_full_test.py`
 
 # Environment Dependencies:
 
@@ -44,17 +45,10 @@ First we create a database named `imdb_data` (or `imdb_data_full` if you already
 2. Run `enable_local_infile.sql` from your db
 3. Run the load table sql queries from your db, change the file path to your own file path OR run the `load_data_from_tsv_full` python script corresponding to your OS.
 
-# Updated Load Full Data into MySQL database method (Still in testing):
-
-CREATE DATABASE imdb_data;
-
-1. Run `get_tsv_files.py` to get the tsvs in a tmp folder (do not push this folder and anything inside to repo)
-2. Run `enable_local_infile.sql` from your db
-3. Run `load_data_from_tsv_full_test.py`
 
 # Accessing the loaded data:
 
-Inside Flask_try folder, run app.py, it will show a sample output for title_akas table in database `imdb_data`
+Run app.py, it will show a sample output for title_akas table in database `imdb_data`
 
 # About the ./tmp folder
 
