@@ -31,13 +31,13 @@ raw_file_paths = [r"./tmp/name.basics.tsv",
                   r"./tmp/title.ratings.tsv"]
 
 # Paths for the sql files
-sql_paths = ['load_name_basics.sql',
-             'load_title_akas.sql',
-             'load_title_basics.sql',
-             'load_title_crew.sql',
-             'load_title_episode.sql',
-             'load_title_principals.sql',
-             'load_title_ratings.sql']
+sql_paths = ['SQL/load_name_basics.sql',
+             'SQL/load_title_akas.sql',
+             'SQL/load_title_basics.sql',
+             'SQL/load_title_crew.sql',
+             'SQL/load_title_episode.sql',
+             'SQL/load_title_principals.sql',
+             'SQL/load_title_ratings.sql']
 
 for i in range(len(sql_paths)): 
     # Load the sql query into python
