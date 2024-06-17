@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Table1">
+	<Table>
+		<Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="110"/>
+		<Row>
+			<Cell><Data ss:Type="String">averageRating</Data></Cell>
+			<Cell><Data ss:Type="String">numVotes</Data></Cell>
+			<Cell><Data ss:Type="String">primaryTitle</Data></Cell>
+		</Row>
+
+		<Row>
+			<Cell><Data ss:Type="Number">9.2</Data></Cell>
+			<Cell><Data ss:Type="Number">7000</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 17</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">9.1</Data></Cell>
+			<Cell><Data ss:Type="Number">6000</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 13</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">9</Data></Cell>
+			<Cell><Data ss:Type="Number">5000</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 7</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">8.9</Data></Cell>
+			<Cell><Data ss:Type="Number">4500</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 20</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">8.7</Data></Cell>
+			<Cell><Data ss:Type="Number">3500</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 12</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">8.5</Data></Cell>
+			<Cell><Data ss:Type="Number">3200</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 16</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">8.4</Data></Cell>
+			<Cell><Data ss:Type="Number">3000</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 6</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">8.2</Data></Cell>
+			<Cell><Data ss:Type="Number">2500</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 2</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">7.8</Data></Cell>
+			<Cell><Data ss:Type="Number">1800</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 10</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">7.5</Data></Cell>
+			<Cell><Data ss:Type="Number">1500</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 1</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">7.3</Data></Cell>
+			<Cell><Data ss:Type="Number">1400</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 19</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">7.1</Data></Cell>
+			<Cell><Data ss:Type="Number">1200</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 5</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">6.9</Data></Cell>
+			<Cell><Data ss:Type="Number">1100</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 15</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">6.8</Data></Cell>
+			<Cell><Data ss:Type="Number">800</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 3</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">6.2</Data></Cell>
+			<Cell><Data ss:Type="Number">900</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 9</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">5.9</Data></Cell>
+			<Cell><Data ss:Type="Number">600</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 4</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">5.4</Data></Cell>
+			<Cell><Data ss:Type="Number">700</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 11</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">5.1</Data></Cell>
+			<Cell><Data ss:Type="Number">500</Data></Cell>
+			<Cell><Data ss:Type="String">Primary Title 18</Data></Cell>
+		</Row>	</Table>
+</Worksheet>
+</Workbook>
