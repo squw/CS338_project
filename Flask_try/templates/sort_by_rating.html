@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+<!--block for head-->
+{% block head %}
+<title>Sort By Ratings</title>
+{% endblock %}
+
+<!--block for body-->
+{% block body %}
+<div class="content">
+  <h1>Title Akas</h1>
+
+  <table>
+    <tr>
+      <th>Average Rating</th>
+      <th>Number of Votes</th>
+      <th>Title</th>
+    </tr>
+    {% for entry in sorted_table %}
+    <tr>
+      <td>{{ entry[0] }}</td>
+      <td>{{ entry[1] }}</td>
+      <td>{{ entry[2] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

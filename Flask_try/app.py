@@ -29,12 +29,23 @@ db = SQLAlchemy(app)
 def index():
     return render_template("index.html")
 
+# print full title_akas
 @app.route('/title_akas')
 def show_title_akas():
     result = db.session.execute(text('SELECT * FROM title_akas'))
     title_akas_entries = result.fetchall()
     return render_template('title_akas.html', title_akas_entries=title_akas_entries)
 
+# Feature 1: sort by rating
+@app.route('/Sort_by_rating')
+def sort_by_rating():
+    sql_path = 'SQL/Feature1_sort_by_rating.sql'
+    with open(sql_path, 'r') as file:
+        query = file.read()
+    result = db.session.execute(text(query))
+    output = result.fetchall()
+    return render_template('sort_by_rating.html', sorted_table = output)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
