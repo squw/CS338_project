@@ -39,7 +39,7 @@ def show_title_akas():
 # Feature 1: sort by rating
 @app.route('/Sort_by_rating')
 def sort_by_rating():
-    sql_path = 'SQL/Feature1_sort_by_rating.sql'
+    sql_path = 'SQL/Feature3_sort_by_rating.sql'
     with open(sql_path, 'r') as file:
         query = file.read()
     result = db.session.execute(text(query))
