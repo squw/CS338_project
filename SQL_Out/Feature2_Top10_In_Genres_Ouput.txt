@@ -1,0 +1,19 @@
+averageRating	numVotes	primaryTitle
+9.2	7000	Primary Title 17
+9.1	6000	Primary Title 13
+9	5000	Primary Title 7
+8.9	4500	Primary Title 20
+8.7	3500	Primary Title 12
+8.5	3200	Primary Title 16
+8.4	3000	Primary Title 6
+8.2	2500	Primary Title 2
+7.8	1800	Primary Title 10
+7.5	1500	Primary Title 1
+7.3	1400	Primary Title 19
+7.1	1200	Primary Title 5
+6.9	1100	Primary Title 15
+6.8	800	Primary Title 3
+6.2	900	Primary Title 9
+5.9	600	Primary Title 4
+5.4	700	Primary Title 11
+5.1	500	Primary Title 18
