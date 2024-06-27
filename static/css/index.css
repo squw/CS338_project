@@ -1,0 +1,38 @@
+
+h1 {
+    color: #ffffff; /* Black text color */
+    border: 3px solid #4f4f4f; /* Yellow semi-thick border */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px; /* Optional: Add some padding inside the border */
+    text-shadow: 
+        -2px -2px 0 #A0522D, /* Top left */
+        2px -2px 0 #A0522D,  /* Top right */
+        -2px 2px 0 #A0522D,  /* Bottom left */
+        2px 2px 0 #A0522D;   /* Bottom right */
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: #FFFFFF; /* White text color */
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    margin: 20px auto; /* Center the links */
+    text-align: center;
+    width: 200px; /* Fixed width for the boxes */
+    padding: 10px 0; /* Padding inside the boxes */
+    background-color: #d0c229; /* Background color for the boxes */
+    border: 2px solid #000000; /* Border to match the background color */
+    border-radius: 5px; /* Rounded corners for the boxes */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+a:hover {
+    color: #FF5722;
+}
+
+a:active {
+    color: #FFC107;
+}
