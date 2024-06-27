@@ -41,8 +41,8 @@ def show_title_akas():
 def sort_by_rating():
     sql_path = 'SQL/Feature3_sort_by_rating.sql'
     with open(sql_path, 'r') as file:
-        query = file.read()
-    result = db.session.execute(text(query))
+        query = text(file.read())
+    result = db.session.execute(query)
     output = result.fetchall()
     return render_template('sort_by_rating.html', sorted_table = output)
     
