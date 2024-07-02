@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 import os
 from urllib.parse import quote
@@ -14,7 +14,7 @@ load_dotenv(r'./password.env')
 host = "localhost"
 username = "root"
 password = os.getenv('MY_PASSWORD')
-database_name = "imdb_dummy"
+database_name = "imdb_data" # change to imdb_data for production data
 
 
 
@@ -29,12 +29,22 @@ db = SQLAlchemy(app)
 def index():
     return render_template("index.html")
 
-# print full title_akas
-@app.route('/title_akas')
-def show_title_akas():
-    result = db.session.execute(text('SELECT * FROM title_akas'))
-    title_akas_entries = result.fetchall()
-    return render_template('title_akas.html', title_akas_entries=title_akas_entries)
+
+
+
+# Feature 6, search title
+@app.route('/search_title', methods=['GET', 'POST'])
+def search_title():
+    search_result = None
+    if request.method == 'POST':
+        title = request.form['title']
+        sql_path = 'SQL/Feature6_search_title.sql'
+        with open(sql_path, 'r') as file:
+            query = text(file.read()).params(usr_input=title)
+        result = db.session.execute(query)
+        search_result = result.fetchall()
+    return render_template('search_by_title.html', search_result=search_result)
+
 
 # Feature 1: sort by rating
 @app.route('/Sort_by_rating')
