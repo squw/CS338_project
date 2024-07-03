@@ -24,6 +24,6 @@ TABLE title_akas FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LIN
     isOriginalTitle
 );
 
-CREATE INDEX idx_titleId ON title_akas(titleId);
+
 CREATE INDEX idx_title ON title_akas(title);
 CREATE INDEX idx_isOriginalTitle ON title_akas(isOriginalTitle);
