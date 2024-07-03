@@ -1,5 +1,6 @@
 -- Active: 1718351315486@@127.0.0.1@3306@imdb_data
 SELECT 
+    ta2.titleId,
     ta2.title AS title, 
     ta1.title AS originalTitle, 
     ta2.region AS region

@@ -1,16 +1,30 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
 
 h1 {
-    color: #ffffff; /* Black text color */
-    border: 3px solid #4f4f4f; /* Yellow semi-thick border */
+    color: #ffffff; /* White text color */
+    border: 3px solid #4f4f4f; /* Semi-thick border */
     font-family: 'Arial', sans-serif;
     text-align: center;
-    margin-top: 50px;
-    padding: 10px; /* Optional: Add some padding inside the border */
+    margin-top: 0;
+    padding: 10px; /* Padding inside the border */
     text-shadow: 
         -2px -2px 0 #A0522D, /* Top left */
         2px -2px 0 #A0522D,  /* Top right */
         -2px 2px 0 #A0522D,  /* Bottom left */
         2px 2px 0 #A0522D;   /* Bottom right */
+    background-color: #333; /* Background color for better contrast */
+    border-radius: 10px; /* Rounded corners */
 }
 
 a {
@@ -19,7 +33,7 @@ a {
     color: #FFFFFF; /* White text color */
     font-family: 'Arial', sans-serif;
     font-size: 18px;
-    margin: 20px auto; /* Center the links */
+    margin: 20px 0; /* Center the links */
     text-align: center;
     width: 200px; /* Fixed width for the boxes */
     padding: 10px 0; /* Padding inside the boxes */
@@ -31,6 +45,7 @@ a {
 
 a:hover {
     color: #FF5722;
+    background-color: #c1a12a; /* Slightly darker shade for hover */
 }
 
 a:active {

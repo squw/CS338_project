@@ -26,9 +26,9 @@
     </tr>
     {% for entry in search_result %}
     <tr>
-      <td>{{ entry[0] }}</td>
-      <td><a href="{{ url_for('title_details', original_title=entry[1]) }}">{{ entry[1] }}</a></td>
-      <td>{{ entry[2] }}</td>
+      <td>{{ entry[1] }}</td>
+      <td><a href="{{ url_for('title_details', titleId=entry[0]) }}">{{ entry[2] }}</a></td>
+      <td>{{ entry[3] }}</td>
     </tr>
     {% endfor %}
   </table>

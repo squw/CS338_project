@@ -30,7 +30,15 @@ def index():
     return render_template("index.html")
 
 
-
+# fetching details based on original title
+@app.route('/<titleId>', methods=['GET'])
+def title_details(titleId):
+    sql_path = 'SQL/title_details.sql'
+    with open(sql_path, 'r') as file:
+        query = text(file.read()).params(titleId=titleId)
+    result = db.session.execute(query)
+    details_result = result.fetchall()
+    return render_template('title_details.html', details_result=details_result)
 
 # Feature 6, search title
 @app.route('/search_title', methods=['GET', 'POST'])
