@@ -12,4 +12,5 @@ ON
     ta1.titleId = ta2.titleId 
     AND ta1.isOriginalTitle = 1
 WHERE 
-    ta2.title = :usr_input;
+    ta2.title LIKE :usr_input
+LIMIT 0,200;

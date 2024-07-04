@@ -48,7 +48,7 @@ def search_title():
         title = request.form['title']
         sql_path = 'SQL/Feature6_search_title.sql'
         with open(sql_path, 'r') as file:
-            query = text(file.read()).params(usr_input=title)
+            query = text(file.read()).params(usr_input=f"%{title}%")
         result = db.session.execute(query)
         search_result = result.fetchall()
     return render_template('search_by_title.html', search_result=search_result)
