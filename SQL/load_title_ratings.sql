@@ -1,3 +1,4 @@
+-- Active: 1720102622061@@127.0.0.1@3306@imdb_data
 CREATE TABLE IF NOT EXISTS title_ratings (
     tconst VARCHAR(255),
     averageRating FLOAT,
@@ -13,3 +14,8 @@ TABLE title_ratings FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 
     averageRating,
     numVotes
 );
+
+CREATE INDEX idx_genre ON title_basics(genres);
+CREATE INDEX  idx_averageRating ON title_ratings(averageRating);
+CREATE INDEX idx_numVotes ON title_ratings(numVotes);
+

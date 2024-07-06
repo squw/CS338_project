@@ -1,6 +1,6 @@
 -- Active: 1720102622061@@127.0.0.1@3306@imdb_data
 -- SQL/Feature4_Top10_In_Genres.sql
-SELECT primaryTitle, runtimeMinutes, averageRating, numVotes, genres
+SELECT primaryTitle, runtimeMinutes, averageRating, numVotes, genres, tconst
 FROM (
     SELECT b.primaryTitle, 
            b.runtimeMinutes, 
@@ -12,7 +12,8 @@ FROM (
                                                                             FROM title_basics
                                                                             JOIN title_ratings ON title_basics.tconst = title_ratings.tconst
                                                                             WHERE genres LIKE :usr_input)
-           ) AS weightedAverage
+           ) AS weightedAverage,
+		   b.tconst
     FROM title_basics b
     JOIN title_ratings r ON b.tconst = r.tconst
     WHERE b.genres LIKE :usr_input
