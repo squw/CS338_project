@@ -75,7 +75,7 @@ def Top_Genres():
             query = text(file.read()).params(usr_input=f"%{genre}%", threshold_for_votes=500)
         result = db.session.execute(query)
         output = result.fetchall()
-    return render_template('template.html', sorted_table=output)
+    return render_template('top_10_genres.html', sorted_table=output)
 
 if __name__ == "__main__":
     app.run(debug=True)
