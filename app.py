@@ -65,14 +65,16 @@ def sort_by_rating():
     return render_template('sort_by_rating.html', sorted_table = output)
 
 # Feature 4: Top 10 in Genres
-@app.route('/Top10_In_Genres')
+@app.route('/Top10_In_Genres', methods=['GET', 'POST'])
 def Top_Genres():
-    genre = request.args.get('genre')
-    sql_path = 'SQL/Feature4_Top10_In_Genres.sql'
-    with open(sql_path, 'r') as file:
-        query = text(file.read())
-    result = db.execute(query, {"usr_input": f"%{genre}%"})
-    output = result.fetchall()
+    output = None
+    if request.method == 'POST':
+        genre = request.form['genre']
+        sql_path = 'SQL/Feature4_Top10_In_Genres.sql'
+        with open(sql_path, 'r') as file:
+            query = text(file.read()).params(usr_input=f"%{genre}%", threshold_for_votes=500)
+        result = db.session.execute(query)
+        output = result.fetchall()
     return render_template('template.html', sorted_table=output)
 
 if __name__ == "__main__":
