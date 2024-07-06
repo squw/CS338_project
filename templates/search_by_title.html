@@ -21,12 +21,16 @@
   <table>
     <tr>
       <th>Original Title</th>
+      <th>Year</th>
+      <th>Type</th>
       <th>Rating</th>
     </tr>
     {% for entry in search_result %}
     <tr>
       <td><a href="{{ url_for('title_details', titleId=entry[0]) }}">{{ entry[1] }}</a></td>
       <td>{{ entry[2] }}</td>
+      <td>{{ entry[3] }}</td>
+      <td>{{ entry[4] }}</td>
     </tr>
     {% endfor %}
   </table>

@@ -1,23 +1,27 @@
-
-SELECT 
-    res.titleId,
-    res.title,
-    tr.averageRating
-FROM
-    (
-    SELECT 
-        titleId,
-        title,
-        isOriginalTitle
-    FROM 
-        title_akas
-    WHERE 
-        title LIKE :usr_input
-    ) AS res
+SELECT DISTINCT
+    ta1.titleId,
+    ta1.title,
+    tb.startYear,
+    tb.titleType,
+    tr.averageRating,
+    tr.numVotes
+FROM 
+    title_akas AS ta1
+JOIN 
+    title_akas AS ta2
+ON 
+    ta1.titleId = ta2.titleId
 JOIN
     title_ratings AS tr
 ON
-    res.titleId = tr.tconst
-WHERE res.isOriginalTitle = 1
-ORDER BY tr.numVotes DESC
+    ta1.titleId = tr.tconst
+JOIN
+    title_basics tb
+ON
+    ta1.titleId = tb.tconst
+WHERE 
+    ta2.title LIKE :usr_input
+    AND ta1.isOriginalTitle = 1
+ORDER BY 
+    tr.numVotes DESC
 LIMIT 200;
