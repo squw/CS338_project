@@ -20,15 +20,13 @@
   {% if search_result %}
   <table>
     <tr>
-      <th>Title</th>
       <th>Original Title</th>
-      <th>Region</th>
+      <th>Rating</th>
     </tr>
     {% for entry in search_result %}
     <tr>
-      <td>{{ entry[1] }}</td>
-      <td><a href="{{ url_for('title_details', titleId=entry[0]) }}">{{ entry[2] }}</a></td>
-      <td>{{ entry[3] }}</td>
+      <td><a href="{{ url_for('title_details', titleId=entry[0]) }}">{{ entry[1] }}</a></td>
+      <td>{{ entry[2] }}</td>
     </tr>
     {% endfor %}
   </table>

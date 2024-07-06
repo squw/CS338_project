@@ -1,16 +1,23 @@
--- Active: 1718351315486@@127.0.0.1@3306@imdb_data
+
 SELECT 
-    ta2.titleId,
-    ta2.title AS title, 
-    ta1.title AS originalTitle, 
-    ta2.region AS region
-FROM 
-    title_akas ta1
-JOIN 
-    title_akas ta2 
-ON 
-    ta1.titleId = ta2.titleId 
-    AND ta1.isOriginalTitle = 1
-WHERE 
-    ta2.title LIKE :usr_input
-LIMIT 0,200;
+    res.titleId,
+    res.title,
+    tr.averageRating
+FROM
+    (
+    SELECT 
+        titleId,
+        title,
+        isOriginalTitle
+    FROM 
+        title_akas
+    WHERE 
+        title LIKE :usr_input
+    ) AS res
+JOIN
+    title_ratings AS tr
+ON
+    res.titleId = tr.tconst
+WHERE res.isOriginalTitle = 1
+ORDER BY tr.numVotes DESC
+LIMIT 200;
