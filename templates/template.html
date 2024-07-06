@@ -2,56 +2,42 @@
 
 <!--block for head-->
 {% block head %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top 10 Popular Films by Genre</title>
-    <style>
-        body {
-            font-family: Times, sans-serif;
-        }
-        .container {
-            margin: 50px;
-        }
-        .result {
-            margin-top: 20px;
-        }
-    </style>
+<title>Search Genre</title>
 {% endblock %}
 
-<!--block for body-->
 {% block body %}
-<div class="container">
-    <h1>Select Genre</h1>
-    <select id="genreDropdown">
-        <option value="Romance">Romance</option>
-        <option value="Action">Action</option>
-        <option value="Adventure">Adventure</option>
-        <option value="Animation">Animation</option>
-        <option value="Biography">Biography</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Crime">Crime</option>
-        <option value="Documentary">Documentary</option>
-        <option value="Drama">Drama</option>
-        <option value="Family">Family</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="Film-Noir">Film-Noir</option>
-        <option value="Game-Show">Game-Show</option>
-        <option value="History">History</option>
-        <option value="Horror">Horror</option>
-        <option value="Music">Music</option>
-        <option value="Musical">Musical</option>
-        <option value="Mystery">Mystery</option>
-        <option value="News">News</option>
-        <option value="Reality-TV">Reality-TV</option>
-        <option value="Romance">Romance</option>
-        <option value="Sci-Fi">Sci-Fi</option>
-        <option value="Short">Short</option>
-        <option value="Sport">Sport</option>
-        <option value="Talk-Show">Talk-Show</option>
-        <option value="Thriller">Thriller</option>
-        <option value="War">War</option>
-        <option value="Western">Western</option>
-    </select>
-    <button onclick="fetchTop10Films()">Get Top 10 Films</button>
-    <div class="result" id="result"></div>
-</div>
+<h1>Top 10 Movies in Genre</h1>
+<form action="{{ url_for('Top_Genres') }}" method="POST">
+    <label for="title">Search Genre:</label>
+    <input type="text" id="genre" name="genre">
+    <input type="submit" value="Search">
+</form>
+
+{% if sorted_table %}
+<h2>Results</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Primary Title</th>
+            <th>Runtime Minutes</th>
+            <th>Average Rating</th>
+            <th>Number of Votes</th>
+            <th>Genres</th>
+            <!-- Add more columns as necessary -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in sorted_table %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <!-- Add more columns as necessary -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}
