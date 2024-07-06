@@ -1,7 +1,8 @@
+-- Active: 1720102622061@@127.0.0.1@3306@imdb_dummy
 SET @AverageForGenre= (SELECT AVG(averageRating)
 		FROM title_basics
         JOIN title_ratings ON title_basics.tconst = title_ratings.tconst
-        WHERE genres = "Comedy,Family"); 
+        WHERE genres like :usr_input;); 
 SET @threshold_for_votes = 500;
 
 SELECT primaryTitle, runtimeMinutes, averageRating, numVotes, genres
@@ -15,7 +16,7 @@ SELECT b.primaryTitle,
     ((@threshold_for_votes/(numVotes+@threshold_for_votes))*@AverageForGenre) AS weightedAverage
 FROM title_basics b
 JOIN title_ratings r ON b.tconst = r.tconst
-WHERE b.genres =  "Comedy,Family"
+WHERE b.genres like :usr_input;
 GROUP BY b.primaryTitle, r.tconst) AS sub
 ORDER BY weightedAverage DESC
 LIMIT 10;
