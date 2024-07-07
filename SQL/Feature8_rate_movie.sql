@@ -26,4 +26,3 @@ END //
 
 DELIMITER ;
 
-CALL UpdateMovieRating(:movie_id, :rating);
