@@ -40,21 +40,35 @@ def title_details(titleId):
     details_result = result.fetchall()
     return render_template('title_details.html', details_result=details_result)
 
-# Feature 6, search title
-@app.route('/search_title', methods=['GET', 'POST'])
-def search_title():
-    search_result = None
+
+
+# Feature1: Sort by language
+@app.route('/sort_by_language', methods=['GET', 'POST'])
+def sort_by_language():
+    sorted_table = None
     if request.method == 'POST':
-        title = request.form['title']
-        sql_path = 'SQL/Feature6_search_title.sql'
+        language = request.form['language']
+        sql_path = 'SQL/Feature1_sort_by_language.sql'
         with open(sql_path, 'r') as file:
-            query = text(file.read()).params(usr_input=f"%{title}%")
+            query = text(file.read()).params(language=language)
         result = db.session.execute(query)
-        search_result = result.fetchall()
-    return render_template('search_by_title.html', search_result=search_result)
+        sorted_table = result.fetchall()
+    return render_template('sort_by_language.html', sorted_table=sorted_table)
 
+#Feature2: Sort by region
+@app.route('/sort_by_region', methods=['GET', 'POST'])
+def sort_by_region():
+    sorted_table = None
+    if request.method == 'POST':
+        region = request.form['region']
+        sql_path = 'SQL/Feature2_sort_by_region.sql'
+        with open(sql_path, 'r') as file:
+            query = text(file.read()).params(region=region)
+        result = db.session.execute(query)
+        sorted_table = result.fetchall()
+    return render_template('sort_by_region.html', sorted_table=sorted_table)
 
-# Feature 1: sort by rating
+# Feature 3: sort by rating
 @app.route('/Sort_by_rating')
 def sort_by_rating():
     sql_path = 'SQL/Feature3_sort_by_rating.sql'
@@ -76,6 +90,45 @@ def Top_Genres():
         result = db.session.execute(query)
         output = result.fetchall()
     return render_template('top_10_genres.html', sorted_table=output)
+
+# Feature 6, search title
+@app.route('/search_title', methods=['GET', 'POST'])
+def search_title():
+    search_result = None
+    if request.method == 'POST':
+        title = request.form['title']
+        sql_path = 'SQL/Feature6_search_title.sql'
+        with open(sql_path, 'r') as file:
+            query = text(file.read()).params(usr_input=f"%{title}%")
+        result = db.session.execute(query)
+        search_result = result.fetchall()
+    return render_template('search_by_title.html', search_result=search_result)
+
+# Feature 8: rate movie
+@app.route('/rate_movie', methods=['GET', 'POST'])
+def rate_movie():
+    message = None
+    if request.method == 'POST':
+        movie_id = request.form['movie_id']
+        rating = int(request.form['rating'])
+
+        query = text("CALL UpdateMovieRating(:movie_id, :rating)").params(movie_id=movie_id, rating=rating)
+
+        try:
+            db.session.execute(query)
+            db.session.commit()
+            message = "Rating submitted successfully!"
+        except Exception as e:
+            db.session.rollback()
+            message = f"Error: {e}"
+
+        return render_template('rate_movie.html', message=message)
+
+    return render_template('rate_movie.html')
+    app.run(debug=True)
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

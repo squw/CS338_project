@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+<!-- block for head -->
+{% block head %}
+<title>Sort By Language</title>
+{% endblock %}
+
+<!-- block for body -->
+{% block body %}
+<div class="content">
+  <h1>Sort By Language</h1>
+
+  <form action="/sort_by_language" method="post">
+    <label for="language">Language:</label>
+    <select id="language" name="language" required>
+      <option value="zh">Chinese (zh)</option>
+      <option value="yo">Yoruba (yo)</option>
+      <option value="sv">Swedish (sv)</option>
+      <option value="ru">Russian (ru)</option>
+      <option value="pt">Portuguese (pt)</option>
+      <option value="no">Norwegian (no)</option>
+      <option value="nl">Dutch (nl)</option>
+      <option value="ko">Korean (ko)</option>
+      <option value="ja">Japanese (ja)</option>
+      <option value="it">Italian (it)</option>
+      <option value="hi">Hindi (hi)</option>
+      <option value="fr">French (fr)</option>
+      <option value="es">Spanish (es)</option>
+      <option value="en">English (en)</option>
+      <option value="de">German (de)</option>
+      <option value="ca">Catalan (ca)</option>
+      <option value="ar">Arabic (ar)</option>
+      <option value="af">Afrikaans (af)</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if sorted_table %}
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Language</th>
+    </tr>
+    {% for entry in sorted_table %}
+    <tr>
+      <td>{{ entry[1] }}</td>
+      <td>{{ entry[2] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</div>
+{% endblock %}
