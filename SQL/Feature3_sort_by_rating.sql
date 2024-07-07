@@ -1,6 +1,6 @@
-SELECT primaryTitle, averageRating, numVotes 
-FROM title_basics
-JOIN title_ratings ON title_basics.tconst = title_ratings.tconst
+SELECT primaryTitle, averageRating, numVotes, b.tconst
+FROM title_basics b
+JOIN title_ratings r ON b.tconst = r.tconst
 WHERE numVotes >= 500
 ORDER BY averageRating DESC;
 
