@@ -50,12 +50,12 @@ def sort_by_language():
         language = request.form['language']
         sql_path = 'SQL/Feature1_sort_by_language.sql'
         with open(sql_path, 'r') as file:
-            query = text(file.read()).params(language=language)
+            query = text(file.read()).params(selected_language=language)
         result = db.session.execute(query)
         sorted_table = result.fetchall()
     return render_template('sort_by_language.html', sorted_table=sorted_table)
 
-#Feature2: Sort by region
+# Feature2: Sort by region
 @app.route('/sort_by_region', methods=['GET', 'POST'])
 def sort_by_region():
     sorted_table = None
@@ -63,7 +63,7 @@ def sort_by_region():
         region = request.form['region']
         sql_path = 'SQL/Feature2_sort_by_region.sql'
         with open(sql_path, 'r') as file:
-            query = text(file.read()).params(region=region)
+            query = text(file.read()).params(selected_region=region)
         result = db.session.execute(query)
         sorted_table = result.fetchall()
     return render_template('sort_by_region.html', sorted_table=sorted_table)
