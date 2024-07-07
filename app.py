@@ -112,7 +112,9 @@ def rate_movie():
         movie_id = request.form['movie_id']
         rating = int(request.form['rating'])
 
-        query = text("CALL UpdateMovieRating(:movie_id, :rating)").params(movie_id=movie_id, rating=rating)
+        sql_path = 'SQL/Feature8_rate_movie.sql'
+        with open(sql_path, 'r') as file:
+            query = text(file.read()).params(movie_id=movie_id, rating=rating)
 
         try:
             db.session.execute(query)
@@ -125,7 +127,6 @@ def rate_movie():
         return render_template('rate_movie.html', message=message)
 
     return render_template('rate_movie.html')
-    app.run(debug=True)
 
 
 

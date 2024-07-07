@@ -26,6 +26,4 @@ END //
 
 DELIMITER ;
 
-CALL UpdateMovieRating('tt0000001', 8);
-
-SELECT * FROM title_ratings WHERE tconst = 'tt0000001';
+CALL UpdateMovieRating(:movie_id, :rating);
