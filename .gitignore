@@ -1,3 +1,4 @@
 tmp/
 password.env
 .venv/
+venv/
