@@ -1,15 +1,3 @@
-Sample Data: 
-mysql> SELECT      tb.originalTitle AS Title,     tb.titleType,      CASE          WHEN tb.isAdult = 0 THEN           'Everyone'
-    ELSE           'Adult'     END AS isAdult,      CASE          WHEN tb.startYear = 0000 THEN           'Unknown'         ELSE
-      tb.startYear     END AS startYear,      tb.endYear,      CASE          WHEN tb.runtimeMinutes >= 60 THEN           CONCAT(FLOOR(tb.runtimeMinutes / 60), ' hour(s) and ', tb.runtimeMinutes % 60, ' minute(s)')         ELSE           CONCAT(tb.runtimeMinutes, ' minute(s)')     END AS runTime,      tb.genres FROM     title_basics tb WHERE     tconst = 'tt0000003';
-+------------------+-----------+----------+-----------+---------+--------------+---------------+
-| Title            | titleType | isAdult  | startYear | endYear | runTime      | genres        |
-+------------------+-----------+----------+-----------+---------+--------------+---------------+
-| Original Title 3 | short     | Everyone | 1995      |    NULL | 30 minute(s) | Comedy,Family |
-+------------------+-----------+----------+-----------+---------+--------------+---------------+
-1 row in set (0.00 sec)
-
-
 PROD Data:
 mysql> SELECT      tb.originalTitle AS Title,     tb.titleType,      CASE          WHEN tb.isAdult = 0 THEN           'Everyone'
     ELSE           'Adult'     END AS isAdult,      CASE          WHEN tb.startYear = 0000 THEN           'Unknown'         ELSE
