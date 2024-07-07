@@ -1,9 +1,7 @@
 USE imdb_dummy;
 
--- Drop the procedure if it already exists
 DROP PROCEDURE IF EXISTS UpdateMovieRating;
 
--- Create the procedure
 DELIMITER //
 
 CREATE PROCEDURE UpdateMovieRating(IN movieId VARCHAR(255), IN userRating INT)
@@ -11,7 +9,6 @@ BEGIN
     DECLARE currentAvg FLOAT;
     DECLARE currentVotes INT;
 
-    -- Get the current average rating and number of votes
     SELECT averageRating, numVotes
     INTO currentAvg, currentVotes
     FROM title_ratings
