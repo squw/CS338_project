@@ -2,11 +2,11 @@
 
 # Contributors
 
-Henry Sun
-Alan Fang
-Rain Wang
-Ruby Fang
-Lambert Tao
+Henry Sun/ 
+ Alan Fang/
+ Rain Wang/
+ Ruby Fang/
+ Lambert Tao
 
 # Data Source
 

@@ -11,7 +11,7 @@ FROM (
            ((:threshold_for_votes / (r.numVotes + :threshold_for_votes)) * (SELECT AVG(averageRating)
                                                                             FROM title_basics
                                                                             JOIN title_ratings ON title_basics.tconst = title_ratings.tconst
-                                                                            WHERE genres LIKE :usr_input)
+                                                                            WHERE genres LIKE :usr_input) 
            ) AS weightedAverage,
 		   b.tconst
     FROM title_basics b
