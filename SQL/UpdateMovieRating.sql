@@ -18,7 +18,7 @@ BEGIN
     SET currentAvg = ((currentAvg * currentVotes) + userRating) / (currentVotes + 1);
     SET currentVotes = currentVotes + 1;
 
-    -- Update the titleRatings table
+    -- Update the title_ratings table
     UPDATE title_ratings
     SET averageRating = currentAvg, numVotes = currentVotes
     WHERE tconst = movieId;

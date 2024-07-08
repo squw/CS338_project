@@ -24,6 +24,39 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+procedure_created = False
+
+def create_procedure():
+    global procedure_created
+    if not procedure_created:
+        db.session.execute(text("USE imdb_data;"))
+        db.session.execute(text("DROP PROCEDURE IF EXISTS UpdateMovieRating;"))
+        db.session.execute(text("""
+        CREATE PROCEDURE UpdateMovieRating(IN movieId VARCHAR(255), IN userRating INT)
+        BEGIN
+            DECLARE currentAvg FLOAT;
+            DECLARE currentVotes INT;
+
+            SELECT averageRating, numVotes
+            INTO currentAvg, currentVotes
+            FROM title_ratings
+            WHERE tconst = movieId;
+
+            -- Calculate the new average rating
+            SET currentAvg = ((currentAvg * currentVotes) + userRating) / (currentVotes + 1);
+            SET currentVotes = currentVotes + 1;
+
+            -- Update the title_ratings table
+            UPDATE title_ratings
+            SET averageRating = currentAvg, numVotes = currentVotes
+            WHERE tconst = movieId;
+        END
+        """))
+        db.session.commit()
+        procedure_created = True
+
+with app.app_context():
+    create_procedure()
 
 @app.route('/')
 def index():
@@ -91,7 +124,7 @@ def Top_Genres():
         output = result.fetchall()
     return render_template('top_10_genres.html', sorted_table=output)
 
-# Feature 6, search title
+# Feature 6, search title combine with feature 8, rate movie
 @app.route('/search_title', methods=['GET', 'POST'])
 def search_title():
     search_result = None
@@ -114,7 +147,7 @@ def search_title():
                 sql_path = 'SQL/Feature8_rate_movie.sql'
                 with open(sql_path, 'r') as file:
                     query = text(file.read()).params(movie_id=movie_id, rating=rating)
-
+                
                 try:
                     db.session.execute(query)
                     db.session.commit()
@@ -133,28 +166,6 @@ def search_title():
             message = f"Missing form field: {e}"
     
     return render_template('search_by_title.html', search_result=search_result, message=message)
-
-# Feature 8: rate movie
-@app.route('/rate_movie', methods=['POST'])
-def rate_movie():
-    movie_id = request.form['movie_id']
-    rating = int(request.form['rating'])
-
-    sql_path = 'SQL/Feature8_rate_movie.sql'
-    with open(sql_path, 'r') as file:
-        query = text(file.read()).params(movie_id=movie_id, rating=rating)
-
-    try:
-        db.session.execute(query)
-        db.session.commit()
-        message = "Rating submitted successfully!"
-    except Exception as e:
-        db.session.rollback()
-        message = f"Error: {e}"
-
-    return redirect(url_for('search_title'))
-
-
 
 
 if __name__ == "__main__":
