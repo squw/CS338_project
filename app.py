@@ -95,14 +95,44 @@ def Top_Genres():
 @app.route('/search_title', methods=['GET', 'POST'])
 def search_title():
     search_result = None
+    message = None
+    
     if request.method == 'POST':
-        title = request.form['title']
-        sql_path = 'SQL/Feature6_search_title.sql'
-        with open(sql_path, 'r') as file:
-            query = text(file.read()).params(usr_input=f"%{title}%")
-        result = db.session.execute(query)
-        search_result = result.fetchall()
-    return render_template('search_by_title.html', search_result=search_result)
+        try:
+            if 'title' in request.form:  # Handling search request
+                title = request.form['title']
+                sql_path = 'SQL/Feature6_search_title.sql'
+                with open(sql_path, 'r') as file:
+                    query = text(file.read()).params(usr_input=f"%{title}%")
+                result = db.session.execute(query)
+                search_result = result.fetchall()
+            elif 'movie_id' in request.form and 'rating' in request.form and 'search_term' in request.form:  # Handling rating submission
+                movie_id = request.form['movie_id']
+                rating = int(request.form['rating'])
+                search_term = request.form['search_term']
+
+                sql_path = 'SQL/Feature8_rate_movie.sql'
+                with open(sql_path, 'r') as file:
+                    query = text(file.read()).params(movie_id=movie_id, rating=rating)
+
+                try:
+                    db.session.execute(query)
+                    db.session.commit()
+                    message = "Rating submitted successfully!"
+                except Exception as e:
+                    db.session.rollback()
+                    message = f"Error: {e}"
+
+                # Re-execute the search query to refresh the search results
+                sql_path = 'SQL/Feature6_search_title.sql'
+                with open(sql_path, 'r') as file:
+                    query = text(file.read()).params(usr_input=f"%{search_term}%")
+                result = db.session.execute(query)
+                search_result = result.fetchall()
+        except KeyError as e:
+            message = f"Missing form field: {e}"
+    
+    return render_template('search_by_title.html', search_result=search_result, message=message)
 
 # Feature 8: rate movie
 @app.route('/rate_movie', methods=['POST'])
