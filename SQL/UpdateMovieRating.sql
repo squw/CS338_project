@@ -1,4 +1,4 @@
-USE imdb_dummy;
+USE imdb_data;
 
 DROP PROCEDURE IF EXISTS UpdateMovieRating;
 
