@@ -15,7 +15,7 @@ TABLE title_ratings FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 
     numVotes
 );
 
-CREATE INDEX idx_genre ON title_basics(genres);
+
 CREATE INDEX  idx_averageRating ON title_ratings(averageRating);
 CREATE INDEX idx_numVotes ON title_ratings(numVotes);
 
