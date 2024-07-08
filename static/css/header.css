@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}  
+
+.header h1 {
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+}
+
+.home-button {
+    width: 2%;
+    height: auto;
+    cursor: pointer;
+    margin-left: 2%;
+    display: inline-block;
+    position: absolute;
+    margin-top: 0.2%;
+}

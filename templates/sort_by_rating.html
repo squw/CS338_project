@@ -7,8 +7,15 @@
 
 <!--block for body-->
 {% block body %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
 <div class="content">
+  
+<div class="header">
+  <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+  </a>
   <h1>Sort By Rating</h1>
+</div>
 
   <table>
     <tr>

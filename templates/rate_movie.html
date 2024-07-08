@@ -7,8 +7,15 @@
 
 <!-- block for body -->
 {% block body %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
 <div class="content">
-  <h1>Rate a Movie</h1>
+
+  <div class="header">
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+    </a>
+    <h1>Rate a Movie</h1>
+  </div>
   
   <!-- Form to rate a movie -->
   <form action="/rate_movie" method="post">

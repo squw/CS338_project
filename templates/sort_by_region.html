@@ -5,8 +5,15 @@
 {% endblock %}
 
 {% block body %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
 <div class="content">
-  <h1>Sort by Region</h1>
+
+  <div class="header">
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+    </a>
+    <h1>Sort by Region</h1>
+  </div>
   
   <form action="/sort_by_region" method="post">
     <label for="region">Select Region:</label>
