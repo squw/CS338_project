@@ -41,6 +41,7 @@ sql_paths = ['SQL/load_name_basics.sql',
 
 for i in range(len(sql_paths)): 
     # Load the sql query into python
+    print("hello")
     with open(sql_paths[i], 'r') as file:
         sql_load = file.read()
 
