@@ -102,7 +102,7 @@ def sort_by_region():
     return render_template('sort_by_region.html', sorted_table=sorted_table)
 
 # Feature 3: sort by rating
-@app.route('/Sort_by_rating')
+@app.route('/sort_by_rating')
 def sort_by_rating():
     sql_path = 'SQL/Feature3_sort_by_rating.sql'
     with open(sql_path, 'r') as file:
@@ -112,8 +112,8 @@ def sort_by_rating():
     return render_template('sort_by_rating.html', sorted_table = output)
 
 # Feature 4: Top 10 in Genres
-@app.route('/Top10_In_Genres', methods=['GET', 'POST'])
-def Top_Genres():
+@app.route('/top_genres', methods=['GET', 'POST'])
+def top_genres():
     output = None
     if request.method == 'POST':
         genre = request.form['genre']

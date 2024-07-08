@@ -7,7 +7,7 @@
 
 {% block body %}
 <h1>Top 10 Movies in Genre</h1>
-<form action="{{ url_for('Top_Genres') }}" method="POST">
+<form action="{{ url_for('top_genres') }}" method="POST">
     <label for="genre">Select Genre:</label>
     <select id="genre" name="genre">
         <option value="Action">Action</option>
