@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 from urllib.parse import quote
@@ -105,28 +105,24 @@ def search_title():
     return render_template('search_by_title.html', search_result=search_result)
 
 # Feature 8: rate movie
-@app.route('/rate_movie', methods=['GET', 'POST'])
+@app.route('/rate_movie', methods=['POST'])
 def rate_movie():
-    message = None
-    if request.method == 'POST':
-        movie_id = request.form['movie_id']
-        rating = int(request.form['rating'])
+    movie_id = request.form['movie_id']
+    rating = int(request.form['rating'])
 
-        sql_path = 'SQL/Feature8_rate_movie.sql'
-        with open(sql_path, 'r') as file:
-            query = text(file.read()).params(movie_id=movie_id, rating=rating)
+    sql_path = 'SQL/Feature8_rate_movie.sql'
+    with open(sql_path, 'r') as file:
+        query = text(file.read()).params(movie_id=movie_id, rating=rating)
 
-        try:
-            db.session.execute(query)
-            db.session.commit()
-            message = "Rating submitted successfully!"
-        except Exception as e:
-            db.session.rollback()
-            message = f"Error: {e}"
+    try:
+        db.session.execute(query)
+        db.session.commit()
+        message = "Rating submitted successfully!"
+    except Exception as e:
+        db.session.rollback()
+        message = f"Error: {e}"
 
-        return render_template('rate_movie.html', message=message)
-
-    return render_template('rate_movie.html')
+    return redirect(url_for('search_title'))
 
 
 
