@@ -13,9 +13,13 @@
 
   <form action="{{ url_for('search_title') }}" method="POST">
     <label for="title">Search Title:</label>
-    <input type="text" id="title" name="title">
+    <input type="text" id="title" name="title" required>
     <input type="submit" value="Search">
   </form>
+
+  {% if message %}
+  <p>{{ message }}</p>
+  {% endif %}
 
   {% if search_result %}
   <table>
@@ -24,6 +28,7 @@
       <th>Year</th>
       <th>Type</th>
       <th>Rating</th>
+      <th>Votes</th>
       <th>Rate This Movie</th>
     </tr>
     {% for entry in search_result %}
@@ -32,9 +37,11 @@
       <td>{{ entry[2] }}</td>
       <td>{{ entry[3] }}</td>
       <td>{{ entry[4] }}</td>
+      <td>{{ entry[5] }}</td>
       <td>
-        <form action="{{ url_for('rate_movie') }}" method="POST">
+        <form action="{{ url_for('search_title') }}" method="POST">
           <input type="hidden" name="movie_id" value="{{ entry[0] }}">
+          <input type="hidden" name="search_term" value="{{ request.form['title'] }}">
           <select name="rating" required>
             <option value="" disabled selected>Rate</option>
             {% for i in range(1, 11) %}
