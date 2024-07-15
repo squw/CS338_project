@@ -12,7 +12,7 @@ FROM
 WHERE
     ta.titleId = tb.tconst AND
     ta.titleId = tr.tconst AND
-    ta.title like '%john%'
+    ta.title like :usr_input
 ORDER BY
     tr.numVotes DESC
-LIMIT 200;
+LIMIT 100;
