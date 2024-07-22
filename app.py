@@ -1,9 +1,13 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, send_file
 from flask_sqlalchemy import SQLAlchemy
 import os
 from urllib.parse import quote
 from dotenv import load_dotenv
 from sqlalchemy import text
+from io import BytesIO
+import base64
+import matplotlib.pyplot as plt
+import pandas as pd
 # 'pip install pymysql cryptography' may be a required package for this program to run
 
 
@@ -167,6 +171,34 @@ def search_title():
     
     return render_template('search_by_title.html', search_result=search_result, message=message)
 
+
+@app.route('/top_directors', methods=['GET', 'POST'])
+def top_directors():
+    sql_path = 'SQL/top_directors.sql'
+    min_votes = request.form.get('min_votes', 50000, type=int)
+    num_directors = request.form.get('num_directors', 30, type=int)
+    with open(sql_path, 'r') as file:
+        query = text(file.read()).params(min_votes = min_votes, num_directors = num_directors)
+    result = db.session.execute(query)
+    directors = result.fetchall()
+    
+    df = pd.DataFrame(directors, columns=['director_name', 'avg_rating'])
+    num_directors = len(df)
+    plt.figure(figsize=(12, max(6, num_directors / 2)))
+    plt.barh(df['director_name'], df['avg_rating'], color='skyblue')
+    plt.xlabel('Average Rating')
+    plt.ylabel('Director')
+    plt.title('Top 30 Directors by Average Movie Rating')
+    plt.gca().invert_yaxis()
+    
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    plt.close()
+    img.seek(0)
+    
+    plot_url = base64.b64encode(img.getvalue()).decode('utf8')
+    
+    return render_template('top_directors.html', plot_url=plot_url, min_votes=min_votes, num_directors=num_directors)
 
 if __name__ == "__main__":
     app.run(debug=True)

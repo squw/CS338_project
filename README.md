@@ -24,7 +24,7 @@ https://datasets.imdbws.com/
 2. Python packages (.venv highly recommended):
 
 ```
-pip install Flask Flask-SQLAlchemy python-dotenv requests pandas SQLAlchemy pymysql cryptography
+pip install Flask Flask-SQLAlchemy python-dotenv requests pandas SQLAlchemy pymysql cryptography matplotlib pandas
 ```
 
 # Load Full Data into MySQL database method:
