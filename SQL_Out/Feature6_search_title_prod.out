@@ -1,45 +1,36 @@
 PROD Data:
-mysql> SELECT DISTINCT
-    ->     ta1.titleId,
-    ->     ta1.title,
-    ->     tb.startYear,
-    ->     tb.titleType,
-    ->     tr.averageRating,
-.numVotes
+SELECT DISTINCT
+    ta.titleId,
+    tb.primaryTitle,
+    tb.startYear,
+    tb.titleType,
+    tr.averageRating,
+    tr.numVotes
 FROM
-    ->     tr.numVotes
-    -> FROM
-    ->     title_akas AS ta1
-    -> JOIN
-title_akas AS ta    ->     title_akas AS ta2
-    -> ON
-    ->     ta1.titleId = ta2.titleId
-    -> JOIN
-    ->     title_ratings AS tr
-    -> ON
-    ->     ta1.titleId = tr.tconst
-    -> JOIN
-    ->     title_basics tb
-    -> ON
-    ->     ta1.titleId = tb.tconst
-    -> WHERE
-    ->     ta2.title LIKE '%john%'
-    ->     AND ta1.isOriginalTitle = 1
-    -> ORDER BY
-    ->     tr.numVotes DESC
-    -> LIMIT 10;
-+------------+-----------------------------------+-----------+-----------+---------------+----------+
-| titleId    | title                             | startYear | titleType | averageRating | numVotes |
-+------------+-----------------------------------+-----------+-----------+---------------+----------+
-| tt2911666  | John Wick                         |      2014 | movie     |           7.4 |   741585 |
-| tt0099487  | Edward Scissorhands               |      1990 | movie     |           7.9 |   525281 |
-| tt4425200  | John Wick: Chapter 2              |      2017 | movie     |           7.4 |   513620 |
-| tt0448157  | Hancock                           |      2008 | movie     |           6.4 |   513002 |
-| tt0084787  | The Thing                         |      1982 | movie     |           8.2 |   468453 |
-| tt0033467  | Citizen Kane                      |      1941 | movie     |           8.3 |   466884 |
-| tt6146586  | John Wick: Chapter 3 - Parabellum |      2019 | movie     |           7.4 |   427694 |
-| tt0360486  | Constantine                       |      2005 | movie     |             7 |   375427 |
-| tt0120601  | Being John Malkovich              |      1999 | movie     |           7.7 |   353966 |
-| tt10366206 | John Wick: Chapter 4              |      2023 | movie     |           7.7 |   336742 |
-+------------+-----------------------------------+-----------+-----------+---------------+----------+
-10 rows in set (0.35 sec)
+    title_akas ta,
+    title_basics tb,
+    title_ratings tr
+WHERE
+    ta.titleId = tb.tconst AND
+    ta.titleId = tr.tconst AND
+    ta.title like '%the pursuit of happiness%'
+	-- ta.title like '%alternate_title_3%'
+ORDER BY
+    tr.numVotes DESC
+LIMIT 10;
+
++-----------+------------------------------------------------------------------------------------------------+-----------+-----------+---------------+----------+
+| titleId   | primaryTitle                                                                                   | startYear | titleType | averageRating | numVotes |
++-----------+------------------------------------------------------------------------------------------------+-----------+-----------+---------------+----------+
+| tt0454921 | The Pursuit of Happyness                                                                       |      2006 | movie     |             8 |   565575 |
+| tt0363913 | King of the Corner                                                                             |      2004 | movie     |           5.8 |      580 |
+| tt0092561 | ...and the Pursuit of Happiness                                                                |      1986 | tvMovie   |           7.2 |      523 |
+| tt0067634 | The Pursuit of Happiness                                                                       |      1971 | movie     |           6.2 |      452 |
+| tt7217480 | The Pursuit of Happiness                                                                       |      2019 | tvEpisode |           7.4 |      298 |
+| tt0629457 | The Pursuit of Happiness                                                                       |      1993 | tvEpisode |           7.3 |      269 |
+| tt0212717 | Robert Zemeckis on Smoking, Drinking and Drugging in the 20th Century: In Pursuit of Happiness |      1999 | tvMovie   |           6.9 |      128 |
+| tt6096868 | When Paul Came Over the Sea                                                                    |      2017 | movie     |           7.6 |      101 |
+| tt5715756 | Clínica de Migrantes: Life, Liberty, and the Pursuit of Happiness                              |      2016 | short     |           7.3 |       97 |
+| tt0025690 | The Pursuit of Happiness                                                                       |      1934 | movie     |           6.8 |       76 |
++-----------+------------------------------------------------------------------------------------------------+-----------+-----------+---------------+----------+
+10 rows in set (12.72 sec)
