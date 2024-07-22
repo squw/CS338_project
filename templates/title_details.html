@@ -3,39 +3,28 @@
 <!--block for head-->
 {% block head %}
 <title>Title Details</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/title_details.css') }}">
 {% endblock %}
 
-<!--block for body-->
+<!-- Block for body -->
 {% block body %}
 <div class="content">
-
   <h1>Title Details</h1>
 
   {% if details_result %}
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Type of Media</th>
-      <th>Target Audience</th>
-      <th>Start Year</th>
-      <th>End Year</th>
-      <th>Media Duration</th>
-      <th>Genres</th>
-    </tr>
     {% for entry in details_result %}
-    <tr>
-      <td>{{ entry[0] }}</td>
-      <td>{{ entry[1] }}</td>
-      <td>{{ entry[2] }}</td>
-      <td>{{ entry[3] }}</td>
-      <td>{{ entry[4] }}</td>
-      <td>{{ entry[5] }}</td>
-      <td>{{ entry[6] }}</td>
-    </tr>
+    <div class="title-card">
+      <h2>{{ entry[0] }}</h2>
+      <p><span class="label">Type of Media:</span> {{ entry[1] }}</p>
+      <p><span class="label">Target Audience:</span> {{ entry[2] }}</p>
+      <p><span class="label">Start Year:</span> {{ entry[3] }}</p>
+      <p><span class="label">End Year:</span> {{ entry[4] }}</p>
+      <p><span class="label">Media Duration:</span> {{ entry[5] }}</p>
+      <p><span class="label">Genres:</span> {{ entry[6] }}</p>
+    </div>
     {% endfor %}
-  </table>
   {% else %}
-  <p>No details found for this title.</p>
+    <p>No details found for this title.</p>
   {% endif %}
 </div>
 {% endblock %}
