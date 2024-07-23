@@ -191,7 +191,7 @@ def top_directors():
     plt.barh(df['director_name'], df['avg_rating'], color='skyblue')
     plt.xlabel('Average Rating')
     plt.ylabel('Director')
-    plt.title('Top 30 Directors by Average Movie Rating')
+    plt.title('Top Directors by Average Movie Rating')
     plt.gca().invert_yaxis()
     
     img = BytesIO()
