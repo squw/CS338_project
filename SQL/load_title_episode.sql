@@ -15,3 +15,5 @@ TABLE title_episode FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 
     seasonNumber,
     episodeNumber
 );
+
+CREATE INDEX idx_parentTconst ON title_episode(parentTconst);

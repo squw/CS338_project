@@ -25,8 +25,6 @@ TABLE title_akas FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LIN
 );
 
 
-CREATE INDEX idx_title ON title_akas(title);
 CREATE INDEX idx_isOriginalTitle ON title_akas(isOriginalTitle);
 CREATE INDEX idx_language ON title_akas(language);
 CREATE INDEX idx_region ON title_akas(region);
-

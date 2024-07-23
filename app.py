@@ -28,6 +28,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+
+
 procedure_created = False
 
 def create_procedure():
@@ -138,9 +140,10 @@ def search_title():
         try:
             if 'title' in request.form:  # Handling search request
                 title = request.form['title']
+                #title = f'%{request.form['title']}%'
                 sql_path = 'SQL/Feature6_search_title.sql'
                 with open(sql_path, 'r') as file:
-                    query = text(file.read()).params(usr_input=f"%{title}%")
+                    query = text(file.read()).params(usr_input=f'{title}')
                 result = db.session.execute(query)
                 search_result = result.fetchall()
             elif 'movie_id' in request.form and 'rating' in request.form and 'search_term' in request.form:  # Handling rating submission
