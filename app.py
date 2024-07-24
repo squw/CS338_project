@@ -95,28 +95,10 @@ def sort_by_language():
     return render_template('sort_by_language.html', sorted_table=sorted_table)
 
 # Feature2: most watched by region
-from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
-import os
-from urllib.parse import quote
-from dotenv import load_dotenv
-from sqlalchemy import text
-
-# MySQL Creds
-load_dotenv(r'./password.env')
-host = "localhost"
-username = "root"
-password = os.getenv('MY_PASSWORD')
-database_name = "imdb_data"
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{quote(username)}:{quote(password)}@{quote(host)}/{quote(database_name)}?charset=utf8mb4"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
 
 @app.route('/most_watched_by_region', methods=['GET', 'POST'])
 def most_watched_by_region():
-    regions = ['US', 'GB', 'IN', 'CA', 'AU', 'FR', 'DE', 'JP', 'CN', 'KR']  # Example regions
+    regions = ['US', 'GB', 'IN', 'CA', 'AU', 'FR', 'DE', 'JP', 'CN', 'KR', 'ES', 'IT', 'RU', 'BR', 'MX']  
     most_watched = None
     selected_region = None
     if request.method == 'POST':
@@ -127,9 +109,6 @@ def most_watched_by_region():
         result = db.session.execute(text(query), {'region': selected_region})
         most_watched = result.fetchall()
     return render_template('most_watched_by_region.html', regions=regions, most_watched=most_watched, selected_region=selected_region)
-
-if __name__ == "__main__":
-    app.run(debug=True)
 
 # Feature 3: sort by rating
 @app.route('/sort_by_rating')
