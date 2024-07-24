@@ -1,36 +1,29 @@
-PROD Data:
 SELECT DISTINCT
-    ta.titleId,
-    tb.primaryTitle,
-    tb.startYear,
-    tb.titleType,
-    tr.averageRating,
-    tr.numVotes
-FROM
-    title_akas ta,
-    title_basics tb,
-    title_ratings tr
-WHERE
-    ta.titleId = tb.tconst AND
-    ta.titleId = tr.tconst AND
-    ta.title like '%the pursuit of happiness%'
-	-- ta.title like '%alternate_title_3%'
+	tb.tconst,
+	tb.primaryTitle,
+	tb.startYear,
+	tb.titleType,
+	tr.averageRating,
+	tr.numVotes
+FROM title_basics tb
+JOIN title_ratings tr ON tb.tconst = tr.tconst
+WHERE MATCH(tb.`primaryTitle`) AGAINST('The pursuit of happiness' IN NATURAL LANGUAGE MODE)
 ORDER BY
-    tr.numVotes DESC
+	tr.numVotes DESC
 LIMIT 10;
 
-+-----------+------------------------------------------------------------------------------------------------+-----------+-----------+---------------+----------+
-| titleId   | primaryTitle                                                                                   | startYear | titleType | averageRating | numVotes |
-+-----------+------------------------------------------------------------------------------------------------+-----------+-----------+---------------+----------+
-| tt0454921 | The Pursuit of Happyness                                                                       |      2006 | movie     |             8 |   565575 |
-| tt0363913 | King of the Corner                                                                             |      2004 | movie     |           5.8 |      580 |
-| tt0092561 | ...and the Pursuit of Happiness                                                                |      1986 | tvMovie   |           7.2 |      523 |
-| tt0067634 | The Pursuit of Happiness                                                                       |      1971 | movie     |           6.2 |      452 |
-| tt7217480 | The Pursuit of Happiness                                                                       |      2019 | tvEpisode |           7.4 |      298 |
-| tt0629457 | The Pursuit of Happiness                                                                       |      1993 | tvEpisode |           7.3 |      269 |
-| tt0212717 | Robert Zemeckis on Smoking, Drinking and Drugging in the 20th Century: In Pursuit of Happiness |      1999 | tvMovie   |           6.9 |      128 |
-| tt6096868 | When Paul Came Over the Sea                                                                    |      2017 | movie     |           7.6 |      101 |
-| tt5715756 | Clínica de Migrantes: Life, Liberty, and the Pursuit of Happiness                              |      2016 | short     |           7.3 |       97 |
-| tt0025690 | The Pursuit of Happiness                                                                       |      1934 | movie     |           6.8 |       76 |
-+-----------+------------------------------------------------------------------------------------------------+-----------+-----------+---------------+----------+
-10 rows in set (12.72 sec)
++------------+-------------------------------------+-----------+-----------+---------------+----------+
+| tconst     | primaryTitle                        | startYear | titleType | averageRating | numVotes |
++------------+-------------------------------------+-----------+-----------+---------------+----------+
+| tt0454921  | The Pursuit of Happyness            |      2006 | movie     |             8 |   563057 |
+| tt5719748  | Cold Pursuit                        |      2019 | movie     |           6.2 |    78268 |
+| tt0147612  | Happiness                           |      1998 | movie     |           7.7 |    74598 |
+| tt2967224  | Hot Pursuit                         |      2015 | movie     |           5.1 |    54264 |
+| tt1626146  | Hector and the Search for Happiness |      2014 | movie     |           6.9 |    50564 |
+| tt9166678  | The Happiness of All Mankind        |      2019 | tvEpisode |           9.3 |    46297 |
+| tt15509244 | Happiness for Beginners             |      2023 | movie     |           6.1 |    18557 |
+| tt14979052 | Happiness                           |      2021 | tvSeries  |           7.8 |    10324 |
+| tt0304262  | The Happiness of the Katakuris      |      2001 | movie     |           6.9 |    10051 |
+| tt0058985  | Happiness                           |      1965 | movie     |           7.6 |     9601 |
++------------+-------------------------------------+-----------+-----------+---------------+----------+
+10 rows in set (0.72 sec)

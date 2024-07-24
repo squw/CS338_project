@@ -1,30 +1,39 @@
-Sample Data: 
 SELECT DISTINCT
-    ta.titleId,
-    tb.primaryTitle,
-    tb.startYear,
-    tb.titleType,
-    tr.averageRating,
-    tr.numVotes
-FROM
-    title_akas ta,
-    title_basics tb,
-    title_ratings tr
-WHERE
-    ta.titleId = tb.tconst AND
-    ta.titleId = tr.tconst AND
---    ta.title like '%the pursuit of happiness%'
-	ta.title like '%alternate_title_3%'
+	tb.tconst,
+	tb.primaryTitle,
+	tb.startYear,
+	tb.titleType,
+	tr.averageRating,
+	tr.numVotes
+FROM title_basics tb
+JOIN title_ratings tr ON tb.tconst = tr.tconst
+WHERE MATCH(tb.`primaryTitle`) AGAINST('primary title 17' IN NATURAL LANGUAGE MODE)
 ORDER BY
-    tr.numVotes DESC
-LIMIT 10;
+	tr.numVotes DESC
+LIMIT 200;
 
-
-+-----------+-----------------+-----------+-----------+---------------+----------+
-| titleId   | primaryTitle    | startYear | titleType | averageRating | numVotes |
-+-----------+-----------------+-----------+-----------+---------------+----------+
-| tt0000003 | Primary Title 3 |      1995 | short     |           6.8 |      800 |
-+-----------+-----------------+-----------+-----------+---------------+----------+
-1 row in set (0.01 sec)
-
-
++-----------+------------------+-----------+-----------+---------------+----------+
+| tconst    | primaryTitle     | startYear | titleType | averageRating | numVotes |
++-----------+------------------+-----------+-----------+---------------+----------+
+| tt0000017 | Primary Title 17 |      1987 | tvseries  |           9.2 |     7000 |
+| tt0000013 | Primary Title 13 |      1997 | short     |           9.1 |     6000 |
+| tt0000007 | Primary Title 7  |      1990 | tvseries  |             9 |     5000 |
+| tt0000020 | Primary Title 20 |      1999 | tvepisode |           8.9 |     4500 |
+| tt0000012 | Primary Title 12 |      2010 | tvseries  |           8.7 |     3500 |
+| tt0000016 | Primary Title 16 |      1992 | movie     |           8.5 |     3200 |
+| tt0000006 | Primary Title 6  |      2015 | movie     |           8.4 |     3000 |
+| tt0000002 | Primary Title 2  |      2005 | tvseries  |           8.2 |     2500 |
+| tt0000010 | Primary Title 10 |      2003 | tvepisode |           7.8 |     1800 |
+| tt0000001 | Primary Title 1  |      2000 | movie     |           7.5 |     1500 |
+| tt0000019 | Primary Title 19 |      2013 | video     |           7.3 |     1400 |
+| tt0000005 | Primary Title 5  |      2008 | tvepisode |           7.1 |     1200 |
+| tt0000015 | Primary Title 15 |      2018 | tvepisode |           6.9 |     1100 |
+| tt0000009 | Primary Title 9  |      1998 | video     |           6.2 |      900 |
+| tt0000003 | Primary Title 3  |      1995 | short     |           6.8 |      800 |
+| tt0000011 | Primary Title 11 |      1985 | movie     |           5.4 |      700 |
+| tt0000004 | Primary Title 4  |      2010 | video     |           5.9 |      600 |
+| tt0000018 | Primary Title 18 |      2007 | short     |           5.1 |      500 |
+| tt0000008 | Primary Title 8  |      2020 | short     |           4.5 |      400 |
+| tt0000014 | Primary Title 14 |      2001 | video     |           4.2 |      300 |
++-----------+------------------+-----------+-----------+---------------+----------+
+20 rows in set (0.01 sec)
