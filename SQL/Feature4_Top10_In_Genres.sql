@@ -24,4 +24,4 @@ FROM (
     GROUP BY b.primaryTitle, r.tconst
 ) AS sub
 ORDER BY weightedAverage DESC
-LIMIT 10;`
+LIMIT 10;
