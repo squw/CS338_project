@@ -1245,3 +1245,4 @@ VALUES (
         'producer,writer,director',
         'tt0000020,tt0000021,tt0000019'
     );
+CREATE FULLTEXT INDEX idx_title_basics_ptitle ON title_basics(primaryTitle);
