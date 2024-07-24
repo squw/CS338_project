@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
 
-<!--block for head-->
+<!-- block for head -->
 {% block head %}
 <title>Search Genre</title>
+<style>
+    #genre, #threshold_for_votes {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
@@ -39,6 +50,8 @@
         <option value="Western">Western</option>
         <!-- Add more genres as needed -->
     </select>
+    <label for="threshold_for_votes">Minimum Number of Votes:</label>
+    <input type="number" class="form-control" id="threshold_for_votes" name="threshold_for_votes" value="{{ threshold_for_votes }}" min="0">
     <input type="submit" value="Search">
 </form>
 

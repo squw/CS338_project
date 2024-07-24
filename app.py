@@ -123,9 +123,10 @@ def top_genres():
     output = None
     if request.method == 'POST':
         genre = request.form['genre']
+        threshold_for_votes = request.form.get('threshold_for_votes', 500, type=int)
         sql_path = 'SQL/Feature4_Top10_In_Genres.sql'
         with open(sql_path, 'r') as file:
-            query = text(file.read()).params(usr_input=f"%{genre}%", threshold_for_votes=500)
+            query = text(file.read()).params(usr_input=f"%{genre}%", threshold_for_votes=threshold_for_votes)
         result = db.session.execute(query)
         output = result.fetchall()
     return render_template('top_10_genres.html', sorted_table=output)
