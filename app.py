@@ -204,5 +204,28 @@ def top_directors():
     
     return render_template('top_directors.html', plot_url=plot_url, min_votes=min_votes, num_directors=num_directors)
 
+@app.route('/region_pie_chart', methods=['GET', 'POST'])
+def region_pie_chart():
+    sql_path = 'SQL/count_regions.sql'
+    num_regions = request.form.get('num_regions', 10, type=int)
+    with open(sql_path, 'r') as file:
+        query = text(file.read()).params(num_regions = num_regions)
+    result = db.session.execute(query)
+    regions = result.fetchall()
+    
+    df = pd.DataFrame(regions, columns=['region', 'count'])
+    plt.figure(figsize=(8, 8))
+    plt.pie(df['count'], labels=df['region'], autopct='%1.1f%%', startangle=140)
+    plt.title('Media Distribution by Region')
+    
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    plt.close()
+    img.seek(0)
+    
+    plot_url = base64.b64encode(img.getvalue()).decode('utf8')
+    return render_template('region_pie_chart.html', plot_url=plot_url, num_regions = num_regions)
+    
+
 if __name__ == "__main__":
     app.run(debug=True)
