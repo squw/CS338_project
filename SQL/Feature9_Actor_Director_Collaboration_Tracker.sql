@@ -14,3 +14,4 @@ WHERE
     AND tp1.category = 'actor'
     AND tp2.nconst = (SELECT nconst FROM name_basics WHERE primaryName = 'DIRECTOR_NAME') 
     AND tp2.category = 'director';
+--- replace ACTOR_NAME and DIRECTOR_NAME with the real name
