@@ -1,0 +1,29 @@
+SELECT nb.primaryName, na.avg_rating
+FROM (
+	SELECT tp.nconst, SUM(tr.averageRating * tr.numVotes) / SUM(tr.numVotes) as avg_rating
+	FROM title_principals tp
+	JOIN title_ratings tr ON tr.tconst = tp.tconst
+	WHERE tp.category = 'director' 
+		  AND
+		  tr.numVotes > 50000
+	GROUP BY tp.nconst
+	ORDER BY avg_rating DESC
+	LIMIT 10 -- could be replaced in app
+) na
+JOIN name_basics nb ON nb.nconst = na.nconst;
+
++-------------------+-------------------+
+| primaryName       | avg_rating        |
++-------------------+-------------------+
+| Thomas Schnauz    | 9.899999618530273 |
+| Tetsuya Wakano    | 9.800000190734863 |
+| Michelle MacLaren | 9.800000190734863 |
+| Peter Gould       | 9.751236379225967 |
+| Tetsurô Araki     | 9.723439189848365 |
+| Shintarô Itoga    | 9.699999809265137 |
+| Naoki Matsuura    | 9.699999809265137 |
+| Alik Sakharov     | 9.699999809265137 |
+| Hiroyuki Tanaka   | 9.699999809265137 |
+| Ryosuke Tanaka    | 9.699999809265137 |
++-------------------+-------------------+
+10 rows in set (1.06 sec)
