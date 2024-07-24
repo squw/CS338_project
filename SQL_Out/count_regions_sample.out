@@ -1,0 +1,22 @@
+SELECT region, count(*) as `count`
+FROM title_akas
+WHERE region IS NOT NULL
+GROUP BY region
+ORDER BY `count` DESC
+LIMIT 10;
+
++--------+-------+
+| region | count |
++--------+-------+
+| BE     |     3 |
+| ES     |     2 |
+| CA     |     2 |
+| KR     |     2 |
+| JP     |     2 |
+| IN     |     2 |
+| US     |     1 |
+| BR     |     1 |
+| LU     |     1 |
+| SA     |     1 |
++--------+-------+
+10 rows in set (0.01 sec)
