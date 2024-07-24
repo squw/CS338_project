@@ -1,1 +1,10 @@
-
+tt0000001	movie	Primary Title 1	Original Title 1	0	2000	2002	120	Drama,Romance
+tt0000002	tvseries	Primary Title 2	Original Title 2	1	2005	2007	45	Action,Thriller
+tt0000003	short	Primary Title 3	Original Title 3	0	1995		30	Comedy,Family
+tt0000004	video	Primary Title 4	Original Title 4	0	2010		90	Horror,Mystery
+tt0000005	tvepisode	Primary Title 5	Original Title 5	1	2008		60	Sci-Fi,Adventure
+tt0000006	movie	Primary Title 6	Original Title 6	0	2015		150	Fantasy,Drama
+tt0000007	tvseries	Primary Title 7	Original Title 7	0	1990	1993	50	Crime,Thriller
+tt0000008	short	Primary Title 8	Original Title 8	0	2020		20	Animation,Family
+tt0000009	video	Primary Title 9	Original Title 9	1	1998		100	Action,Comedy
+tt0000010	tvepisode	Primary Title 10	Original Title 10	0	2003		55	Drama,Mystery
