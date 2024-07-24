@@ -1,9 +1,13 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, send_file
 from flask_sqlalchemy import SQLAlchemy
 import os
 from urllib.parse import quote
 from dotenv import load_dotenv
 from sqlalchemy import text
+from io import BytesIO
+import base64
+import matplotlib.pyplot as plt
+import pandas as pd
 # 'pip install pymysql cryptography' may be a required package for this program to run
 
 
@@ -23,6 +27,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{quote(username)}:{quo
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
+
 
 procedure_created = False
 
@@ -117,9 +123,10 @@ def top_genres():
     output = None
     if request.method == 'POST':
         genre = request.form['genre']
+        threshold_for_votes = request.form.get('threshold_for_votes', 50000, type=int)
         sql_path = 'SQL/Feature4_Top10_In_Genres.sql'
         with open(sql_path, 'r') as file:
-            query = text(file.read()).params(usr_input=f"%{genre}%", threshold_for_votes=500)
+            query = text(file.read()).params(usr_input=f"%{genre}%", threshold_for_votes=threshold_for_votes)
         result = db.session.execute(query)
         output = result.fetchall()
     return render_template('top_10_genres.html', sorted_table=output)
@@ -134,9 +141,10 @@ def search_title():
         try:
             if 'title' in request.form:  # Handling search request
                 title = request.form['title']
+                #title = f'%{request.form['title']}%'
                 sql_path = 'SQL/Feature6_search_title.sql'
                 with open(sql_path, 'r') as file:
-                    query = text(file.read()).params(usr_input=f"%{title}%")
+                    query = text(file.read()).params(usr_input=f'{title}')
                 result = db.session.execute(query)
                 search_result = result.fetchall()
             elif 'movie_id' in request.form and 'rating' in request.form and 'search_term' in request.form:  # Handling rating submission
@@ -167,6 +175,57 @@ def search_title():
     
     return render_template('search_by_title.html', search_result=search_result, message=message)
 
+
+@app.route('/top_directors', methods=['GET', 'POST'])
+def top_directors():
+    sql_path = 'SQL/top_directors.sql'
+    min_votes = request.form.get('min_votes', 50000, type=int)
+    num_directors = request.form.get('num_directors', 30, type=int)
+    with open(sql_path, 'r') as file:
+        query = text(file.read()).params(min_votes = min_votes, num_directors = num_directors)
+    result = db.session.execute(query)
+    directors = result.fetchall()
+    
+    df = pd.DataFrame(directors, columns=['director_name', 'avg_rating'])
+    num_directors = len(df)
+    plt.figure(figsize=(12, max(6, num_directors / 2)))
+    plt.barh(df['director_name'], df['avg_rating'], color='skyblue')
+    plt.xlabel('Average Rating')
+    plt.ylabel('Director')
+    plt.title('Top Directors by Average Movie Rating')
+    plt.gca().invert_yaxis()
+    
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    plt.close()
+    img.seek(0)
+    
+    plot_url = base64.b64encode(img.getvalue()).decode('utf8')
+    
+    return render_template('top_directors.html', plot_url=plot_url, min_votes=min_votes, num_directors=num_directors)
+
+@app.route('/region_pie_chart', methods=['GET', 'POST'])
+def region_pie_chart():
+    sql_path = 'SQL/count_regions.sql'
+    num_regions = request.form.get('num_regions', 10, type=int)
+    with open(sql_path, 'r') as file:
+        query = text(file.read()).params(num_regions = num_regions)
+    result = db.session.execute(query)
+    regions = result.fetchall()
+    
+    df = pd.DataFrame(regions, columns=['region', 'count'])
+    plt.figure(figsize=(8, 8))
+    plt.pie(df['count'], labels=df['region'], autopct='%1.1f%%', startangle=140)
+    plt.title('Media Distribution by Region')
+    
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    plt.close()
+    img.seek(0)
+    
+    plot_url = base64.b64encode(img.getvalue()).decode('utf8')
+    return render_template('region_pie_chart.html', plot_url=plot_url, num_regions = num_regions)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

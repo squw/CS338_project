@@ -1,0 +1,63 @@
+.content {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.title-card h2 {
+  margin-top: 0;
+  color: #444;
+}
+
+.title-card p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.label {
+  font-weight: bold;
+  color: #8b4513;  /* Using the same color as in the global theme */
+}
+
+/* Additional styles to align with the global theme */
+.title-card {
+  border: 1px solid #ddd;
+}
+
+.title-card:hover {
+  background-color: #f9f9f9;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #8b4513;  /* Aligning with the theme */
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .title-card {
+    padding: 10px;
+  }
+}

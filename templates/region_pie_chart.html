@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Region Pie Chart</title>
+<style>
+    #num_regions {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
+
+<!--block for body-->
+{% block body %}
+<div class="container">
+    <h1 class="mt-4">Regions Pie Chart</h1>
+    <form method="POST" class="mb-4">
+        <label for="num_regions">Number of Regions:</label>
+        <input type="number" class="form-control" id="num_regions" name="num_regions" value="{{ num_regions }}" min="1">
+        <input type="submit" value="Update">
+    </form>
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Regions Pie Chart" class="img-fluid">
+</div>
+{% endblock %}

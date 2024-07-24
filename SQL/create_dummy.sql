@@ -1,18 +1,18 @@
 -- Active: 1716922056136@@127.0.0.1@3306@imdb_dummy
 -- Truncate all tables
-TRUNCATE TABLE name_basics;
+DROP TABLE IF EXISTS name_basics;
 
-TRUNCATE TABLE title_akas;
+DROP TABLE IF EXISTS title_akas;
 
-TRUNCATE TABLE title_basics;
+DROP TABLE IF EXISTS title_basics;
 
-TRUNCATE TABLE title_crew;
+DROP TABLE IF EXISTS title_crew;
 
-TRUNCATE TABLE title_episode;
+DROP TABLE IF EXISTS title_episode;
 
-TRUNCATE TABLE title_principals;
+DROP TABLE IF EXISTS title_principals;
 
-TRUNCATE TABLE title_ratings;
+DROP TABLE IF EXISTS title_ratings;
 
 -- Create table for title.akas.tsv.gz
 CREATE TABLE IF NOT EXISTS title_akas (
@@ -1245,3 +1245,4 @@ VALUES (
         'producer,writer,director',
         'tt0000020,tt0000021,tt0000019'
     );
+CREATE FULLTEXT INDEX idx_title_basics_ptitle ON title_basics(primaryTitle);

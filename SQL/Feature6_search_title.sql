@@ -1,27 +1,30 @@
+/*
 SELECT DISTINCT
-    ta1.titleId,
-    ta1.title,
+    ta.titleId,
+    tb.primaryTitle,
     tb.startYear,
     tb.titleType,
     tr.averageRating,
     tr.numVotes
 FROM 
-    title_akas AS ta1
-JOIN 
-    title_akas AS ta2
-ON 
-    ta1.titleId = ta2.titleId
-JOIN
-    title_ratings AS tr
-ON
-    ta1.titleId = tr.tconst
-JOIN
-    title_basics tb
-ON
-    ta1.titleId = tb.tconst
-WHERE 
-    ta2.title LIKE :usr_input
-    AND ta1.isOriginalTitle = 1
-ORDER BY 
+    title_akas ta
+JOIN title_basics tb ON ta.titleId = tb.tconst AND ta.title like :usr_input
+JOIN title_ratings tr ON ta.titleId = tr.tconst AND ta.title like :usr_input
+ORDER BY
+    tr.numVotes DESC
+LIMIT 100;
+*/
+
+SELECT DISTINCT
+    tb.tconst,
+    tb.primaryTitle,
+    tb.startYear,
+    tb.titleType,
+    tr.averageRating,
+    tr.numVotes
+FROM title_basics tb
+JOIN title_ratings tr ON tb.tconst = tr.tconst
+WHERE MATCH(tb.`primaryTitle`) AGAINST(:usr_input IN NATURAL LANGUAGE MODE)
+ORDER BY
     tr.numVotes DESC
 LIMIT 200;

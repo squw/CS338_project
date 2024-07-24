@@ -1,37 +1,101 @@
-primaryTitle,language
-"Primary Title 1",en
-"Primary Title 1",en
-"Primary Title 1",en
-"Primary Title 1",en
-"Primary Title 5",en
-"Primary Title 5",en
-"Primary Title 9",en
-"Primary Title 9",en
-"Primary Title 12",en
-"Primary Title 12",en
-"Primary Title 13",en
-"Primary Title 13",en
-"Primary Title 13",en
-"Primary Title 13",en
-"Primary Title 18",en
-"Primary Title 18",en
-"Primary Title 19",en
-"Primary Title 19",en
-"Primary Title 1",en
-"Primary Title 1",en
-"Primary Title 1",en
-"Primary Title 1",en
-"Primary Title 5",en
-"Primary Title 5",en
-"Primary Title 9",en
-"Primary Title 9",en
-"Primary Title 12",en
-"Primary Title 12",en
-"Primary Title 13",en
-"Primary Title 13",en
-"Primary Title 13",en
-"Primary Title 13",en
-"Primary Title 18",en
-"Primary Title 18",en
-"Primary Title 19",en
-"Primary Title 19",en
+primaryTitle,averageRating,tconst,language
+"Blacksmith Scene",6.2,tt0000005,en
+"Leaving the Factory",6.8,tt0000010,en
+"The Arrival of a Train",7.4,tt0000012,en
+"The Arrival of a Train",7.4,tt0000012,en
+"The Arrival of a Train",7.4,tt0000012,en
+"The Arrival of a Train",7.4,tt0000012,en
+"The Photographical Congress Arrives in Lyon",5.7,tt0000013,en
+"Boat Leaving the Port",5.9,tt0000016,en
+"The Sea",5.7,tt0000023,en
+"The Sea",5.7,tt0000023,en
+"Cordeliers' Square in Lyon",5.6,tt0000027,en
+"Fishing for Goldfish",5.1,tt0000028,en
+"Baby's Meal",5.9,tt0000029,en
+"Baby's Meal",5.9,tt0000029,en
+"Jumping the Blanket",5.5,tt0000031,en
+"Horse Trick Riders",5.5,tt0000033,en
+"Horse Trick Riders",5.5,tt0000033,en
+"Arrivée d'un train gare de Vincennes",4.9,tt0000034,en
+"Watering the Flowers",5.6,tt0000035,en
+"Demolition of a Wall",6.4,tt0000070,en
+"Demolition of a Wall",6.4,tt0000070,en
+"Leaving Jerusalem by Railway",6.2,tt0000089,en
+"The House of the Devil",6.7,tt0000091,en
+"Saída do Pessoal Operário da Fábrica Confiança",5.1,tt0000117,en
+"A Terrible Night",5.7,tt0000131,en
+"Card Party",5,tt0000132,en
+"Card Party",5,tt0000132,en
+"Baignade dans le torrent",4.9,tt0000140,en
+"Les cambrioleurs",5,tt0000143,en
+"Chez le magnétiseur",5.2,tt0000144,en
+"A Badly Managed Hotel",3.9,tt0000156,en
+"The Devil's Laboratory",5.1,tt0000159,en
+"Niagara Falls",5.4,tt0000162,en
+"Niagara Falls",5.4,tt0000162,en
+"Le pêcheur dans le torrent",5,tt0000164,en
+"Výstavní párkar a lepic plakátù",4.5,tt0000174,en
+"The Astronomer's Dream; or, the Man in the Moon",7.4,tt0000211,en
+"The Astronomer's Dream; or, the Man in the Moon",7.4,tt0000211,en
+"Scène d'escamotage",4.7,tt0000213,en
+"Au cabaret",4.6,tt0000222,en
+"La bonne absinthe",4.9,tt0000228,en
+"Portuguese Railway Train",3.4,tt0000231,en
+"Haggard's She: The Pillar of Fire",6.3,tt0000235,en
+"Army Life; or, How Soldiers Are Made: Mounted Infantry",4.7,tt0000269,en
+"Army Life; or, How Soldiers Are Made: Mounted Infantry",4.7,tt0000269,en
+"Avenue de l'opéra",5.6,tt0000274,en
+"Chirurgie fin de siècle",5.7,tt0000286,en
+"Le départ d'Arlequin et de Pierrette",5.7,tt0000299,en
+"The Enchanted Drawing",6.9,tt0000300,en
+"La fée aux choux, ou la naissance des enfants",5.2,tt0000302,en
+"Maple Leaf Viewing",5.7,tt0000319,en
+"Maple Leaf Viewing",5.7,tt0000319,en
+"The India Rubber Head",7.1,tt0000359,en
+"The Devil's Seven Castles",6.4,tt0000373,en
+"Midwife to the Upper Classes",5.1,tt0000409,en
+"A Trip to the Moon",8.1,tt0000417,en
+"A Trip to the Moon",8.1,tt0000417,en
+"A Trip to the Moon",8.1,tt0000417,en
+"A Trip to the Moon",8.1,tt0000417,en
+"How Monsieur Takes His Bath",5.7,tt0000432,en
+"The Great Train Robbery",7.3,tt0000439,en
+"N.Y. Fire Department Returning",4,tt0000456,en
+"The Kingdom of the Fairies",7.3,tt0000465,en
+"The Kingdom of the Fairies",7.3,tt0000465,en
+"The Pearl Fisher",6,tt0000495,en
+"The Pearl Fisher",6,tt0000495,en
+"An Impossible Voyage",7.5,tt0000499,en
+"An Impossible Voyage",7.5,tt0000499,en
+"An Impossible Voyage",7.5,tt0000499,en
+"An Impossible Voyage",7.5,tt0000499,en
+"The Effects of Too Much Scotch",4.8,tt0000506,en
+"Los guapos del parque",4.7,tt0000515,en
+"Hanging at Jefferson City",5.4,tt0000525,en
+"Kong Christian d. IXs Bisættelse",4.5,tt0000543,en
+"The Story of the Kelly Gang",6,tt0000574,en
+"The Red Spectre",6.5,tt0000614,en
+Salaviinanpolttajat,8.9,tt0000618,en
+"The Puppet's Nightmare",6.4,tt0000658,en
+"Corrida de toros con Antonio Fuentes",5.4,tt0000666,en
+"A Fantasy",6.9,tt0000682,en
+"A Fantasy",6.9,tt0000682,en
+"A Fantasy",6.9,tt0000682,en
+"A Fantasy",6.9,tt0000682,en
+"The Death of Ivan the Terrible",6.6,tt0000844,en
+"Bakchisarayskiy fontan",5.8,tt0000873,en
+"Locura de amor",4.6,tt0000941,en
+"Les Misérables",6.6,tt0000969,en
+"Les Misérables",6.6,tt0000969,en
+"How Brother Cook was Taught a Lesson",7.8,tt0000987,en
+Cleopatra,5.4,tt0001117,en
+"The Red Inn",4.9,tt0001122,en
+Camille,5.2,tt0001175,en
+"A Fallen Spirit",5.2,tt0001218,en
+"The White Slave Trade",5.8,tt0001258,en
+"Copenhagen by Night",4.9,tt0001280,en
+"A Night in May",5.2,tt0001338,en
+"A Recruit from 64",5.7,tt0001381,en
+"Valdemar Sejr",4.6,tt0001440,en
+"The Hallucinations of Baron Munchausen",6.3,tt0001488,en
+"The Cameraman's Revenge",7.7,tt0001527,en

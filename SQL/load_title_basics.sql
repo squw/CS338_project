@@ -27,3 +27,5 @@ TABLE title_basics FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 L
 );
 CREATE INDEX idx_genre ON title_basics(genres);
 CREATE INDEX idx_tconst ON title_basics(tconst);
+
+CREATE FULLTEXT INDEX idx_title_basics_ptitle ON title_basics(primaryTitle);

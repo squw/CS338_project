@@ -1,0 +1,21 @@
+SELECT region, count(*) as `count`
+FROM title_akas
+WHERE region IS NOT NULL
+GROUP BY region
+ORDER BY `count` DESC
+LIMIT 10;
+
++--------+---------+
+| region | count   |
++--------+---------+
+| JP     | 4816054 |
+| DE     | 4811165 |
+| FR     | 4799529 |
+| IN     | 4745899 |
+| ES     | 4715660 |
+| IT     | 4696313 |
+| PT     | 4610555 |
+| US     | 1540097 |
+| GB     |  490187 |
+| CA     |  273298 |
++--------+---------+
