@@ -1,0 +1,23 @@
+SELECT nb.primaryName, na.avg_rating
+FROM (
+	SELECT tp.nconst, SUM(tr.averageRating * tr.numVotes) / SUM(tr.numVotes) as avg_rating
+	FROM title_principals tp
+	JOIN title_ratings tr ON tr.tconst = tp.tconst
+	WHERE tp.category = 'director' 
+		  AND
+		  tr.numVotes > 5 -- could be replaced in app
+	GROUP BY tp.nconst
+	ORDER BY avg_rating DESC
+	LIMIT 10 -- could be replaced in app
+) na
+JOIN name_basics nb ON nb.nconst = na.nconst;
+
++------------------+-------------------+
+| primaryName      | avg_rating        |
++------------------+-------------------+
+| Person Seventeen | 9.199999809265137 |
+| Person Seven     |                 9 |
+| Person Twelve    | 8.699999809265137 |
+| Person Two       | 8.199999809265137 |
++------------------+-------------------+
+4 rows in set (0.01 sec)
