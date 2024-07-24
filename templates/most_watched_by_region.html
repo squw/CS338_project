@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Most Watched by Region</title>
+{% endblock %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+<div class="content">
+  <div class="header">
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+    </a>
+    <h1>Most Watched by Region</h1>
+  </div>
+  
+  <form action="/most_watched_by_region" method="post">
+    <label for="region">Select Region:</label>
+    <select id="region" name="region" required>
+      <option value="US">United States (US)</option>
+      <option value="GB">United Kingdom (GB)</option>
+      <option value="FR">France (FR)</option>
+      <option value="BE">Belgium (BE)</option>
+      <option value="DE">Germany (DE)</option>
+      <option value="AT">Austria (AT)</option>
+      <option value="JP">Japan (JP)</option>
+      <option value="IN">India (IN)</option>
+      <option value="ES">Spain (ES)</option>
+      <option value="CN">China (CN)</option>
+      <option value="HK">Hong Kong (HK)</option>
+      <option value="IT">Italy (IT)</option>
+      <option value="CH">Switzerland (CH)</option>
+      <option value="KR">South Korea (KR)</option>
+      <option value="RU">Russia (RU)</option>
+      <option value="BY">Belarus (BY)</option>
+      <option value="BR">Brazil (BR)</option>
+      <option value="PT">Portugal (PT)</option>
+      <option value="CA">Canada (CA)</option>
+      <option value="AU">Australia (AU)</option>
+      <option value="NZ">New Zealand (NZ)</option>
+      <option value="SE">Sweden (SE)</option>
+      <option value="NO">Norway (NO)</option>
+      <option value="NL">Netherlands (NL)</option>
+      <option value="LU">Luxembourg (LU)</option>
+      <option value="AR">Argentina (AR)</option>
+      <option value="UY">Uruguay (UY)</option>
+      <option value="ZA">South Africa (ZA)</option>
+      <option value="NA">Namibia (NA)</option>
+      <option value="NG">Nigeria (NG)</option>
+      <option value="GH">Ghana (GH)</option>
+      <option value="EG">Egypt (EG)</option>
+      <option value="SA">Saudi Arabia (SA)</option>
+    </select>
+    <button type="submit">Show</button>
+  </form>
+  {% if most_watched %}
+  <h2>Top 20 Most Watched in {{ selected_region }}</h2>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Title</th>
+      <th>Watch Count</th>
+    </tr>
+    {% for rank, entry in enumerate(most_watched, start=1) %}
+    <tr>
+      <td>{{ rank }}</td>
+      <td>{{ entry.primaryTitle }}</td>
+      <td>{{ entry.watchCount }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</div>
+{% endblock %}
