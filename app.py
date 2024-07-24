@@ -98,7 +98,7 @@ def sort_by_language():
 
 @app.route('/most_watched_by_region', methods=['GET', 'POST'])
 def most_watched_by_region():
-    regions = ['US', 'GB', 'IN', 'CA', 'AU', 'FR', 'DE', 'JP', 'CN', 'KR', 'ES', 'IT', 'RU', 'BR', 'MX']  
+    regions = ['US', 'GB', 'IN', 'CA', 'AU', 'FR', 'DE', 'JP', 'CN', 'KR']
     most_watched = None
     selected_region = None
     if request.method == 'POST':
@@ -108,7 +108,11 @@ def most_watched_by_region():
             query = file.read()
         result = db.session.execute(text(query), {'region': selected_region})
         most_watched = result.fetchall()
-    return render_template('most_watched_by_region.html', regions=regions, most_watched=most_watched, selected_region=selected_region)
+    return render_template('most_watched_by_region.html', 
+                           regions=regions, 
+                           most_watched=most_watched, 
+                           selected_region=selected_region,
+                           enumerate=enumerate)
 
 # Feature 3: sort by rating
 @app.route('/sort_by_rating')
