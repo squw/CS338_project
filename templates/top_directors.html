@@ -7,7 +7,13 @@
 
 <!--block for body-->
 {% block body %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
 <div class="container">
+    <div class="header">
+        <a href="{{ url_for('index') }}">
+          <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+        </a>
+      </div>
     <h1 class="mt-4">Top Directors by Average Movie Rating</h1>
     <form method="POST" class="mb-4">
         <div class="form-group">

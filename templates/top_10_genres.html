@@ -17,7 +17,15 @@
 {% endblock %}
 
 {% block body %}
-<h1>Top 10 Movies in Genre</h1>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+
+<div class="header">
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+    </a>
+    <h1>Top 10 Movies in Genre</h1>
+  </div>
+
 <form action="{{ url_for('top_genres') }}" method="POST">
     <label for="genre">Select Genre:</label>
     <select id="genre" name="genre">

@@ -8,8 +8,16 @@
 
 <!-- Block for body -->
 {% block body %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
 <div class="content">
   <h1>Title Details</h1>
+
+  <div class="header">
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+    </a>
+    <h1>Search Title</h1>
+  </div>
 
   {% if details_result %}
     {% for entry in details_result %}
