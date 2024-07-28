@@ -39,7 +39,7 @@ procedure_created = False
 def create_procedure():
     global procedure_created
     if not procedure_created:
-        db.session.execute(text("USE imdb_data;"))
+        db.session.execute(text("USE imdb_data_full;"))
         db.session.execute(text("DROP PROCEDURE IF EXISTS UpdateMovieRating;"))
         db.session.execute(text("""
         CREATE PROCEDURE UpdateMovieRating(IN movieId VARCHAR(255), IN userRating INT)
@@ -64,9 +64,29 @@ def create_procedure():
         """))
         db.session.commit()
         procedure_created = True
+        
+def load_category_queries():
+    queries = {}
+    with open('SQL/Feature5_search_by_category.sql', 'r') as file:
+        lines = file.readlines()
+        category = None
+        query = []
+        for line in lines:
+            line = line.strip()
+            if line.startswith('--'):
+                if category and query:
+                    queries[category] = ' '.join(query)
+                    query = []
+                category = line.replace('--', '').strip()
+            elif line:
+                query.append(line)
+        if category and query:
+            queries[category] = ' '.join(query)
+    return queries
 
 with app.app_context():
     create_procedure()
+    category_queries = load_category_queries()
 
 @app.route('/')
 def index():
@@ -141,6 +161,20 @@ def top_genres():
         result = db.session.execute(query)
         output = result.fetchall()
     return render_template('top_10_genres.html', sorted_table=output)
+
+# Feature 5: search by category
+@app.route('/search_by_category', methods=['GET', 'POST'])
+def search_by_category():
+    selected_category = None
+    results = []
+    if request.method == 'POST':
+        selected_category = request.form['category']
+        query = category_queries.get(selected_category)
+        if query:
+            results = db.session.execute(text(query)).fetchall()
+            
+    return render_template('search_by_category.html', 
+                           results = results, selected_category = selected_category)
 
 # Feature 6, search title combine with feature 8, rate movie
 @app.route('/search_title', methods=['GET', 'POST'])
