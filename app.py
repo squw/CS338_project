@@ -39,7 +39,7 @@ procedure_created = False
 def create_procedure():
     global procedure_created
     if not procedure_created:
-        db.session.execute(text("USE imdb_data_full;"))
+        db.session.execute(text("USE imdb_data;"))
         db.session.execute(text("DROP PROCEDURE IF EXISTS UpdateMovieRating;"))
         db.session.execute(text("""
         CREATE PROCEDURE UpdateMovieRating(IN movieId VARCHAR(255), IN userRating INT)
