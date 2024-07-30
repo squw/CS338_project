@@ -46,6 +46,13 @@ Run app.py, it will show a sample output for title_akas table in database `imdb_
 2. Sort By Rating: Sort all the medias by their rating. 
 3. Top Genres: Show top medias by genres. 
 4. Clickable titles will lead to more details about that title. 
+5. Top Directors Plot
+6. Media Region Distribution Pie Chart
+7. Sort By Language
+8. Most Watched by Region
+9. Search by Category
+10. Search by Actor and Director
+11. Rate Movies/Shows
 
 # About the ./tmp folder
 
