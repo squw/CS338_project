@@ -10,8 +10,7 @@ JOIN
 JOIN 
     title_principals tp2 ON tb.tconst = tp2.tconst
 WHERE 
-    tp1.nconst = (SELECT nconst FROM name_basics WHERE primaryName = 'ACTOR_NAME') 
+    tp1.nconst = (SELECT nconst FROM name_basics WHERE primaryName = :actor LIMIT 1) 
     AND tp1.category = 'actor'
-    AND tp2.nconst = (SELECT nconst FROM name_basics WHERE primaryName = 'DIRECTOR_NAME') 
+    AND tp2.nconst = (SELECT nconst FROM name_basics WHERE primaryName = :director LIMIT 1) 
     AND tp2.category = 'director';
---- replace ACTOR_NAME and DIRECTOR_NAME with the real name

@@ -1,0 +1,44 @@
+<!-- templates/search_by_actor_and_director.html -->
+{% extends 'base.html' %}
+{% block head %}
+<title>Search Movies by Actor and Director</title>
+{% endblock %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+<div class="content">
+  <div class="header">
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='icons/homepage_icon.png') }}" alt="Home" class="home-button">
+    </a>
+    <h1>Search Movies by Actor and Director</h1>
+  </div>
+  
+  <form action="{{ url_for('search_by_actor_and_director') }}" method="post">
+    <label for="actor_name">Actor Name:</label>
+    <input type="text" id="actor_name" name="actor_name" required>
+    <label for="director_name">Director Name:</label>
+    <input type="text" id="director_name" name="director_name" required>
+    <button type="submit">Search</button>
+  </form>
+
+  {% if results %}
+  <h2>Results</h2>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Year</th>
+      <th>Genres</th>
+    </tr>
+    {% for result in results %}
+    <tr>
+      <td>{{ result.title }}</td>
+      <td>{{ result.titleType }}</td>
+      <td>{{ result.startYear }}</td>
+      <td>{{ result.genres }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</div>
+{% endblock %}

@@ -39,7 +39,7 @@ procedure_created = False
 def create_procedure():
     global procedure_created
     if not procedure_created:
-        db.session.execute(text("USE imdb_data;"))
+        db.session.execute(text("USE " + database_name + ";"))
         db.session.execute(text("DROP PROCEDURE IF EXISTS UpdateMovieRating;"))
         db.session.execute(text("""
         CREATE PROCEDURE UpdateMovieRating(IN movieId VARCHAR(255), IN userRating INT)
@@ -285,6 +285,22 @@ def region_pie_chart():
     plot_url = base64.b64encode(img.getvalue()).decode('utf8')
     return render_template('region_pie_chart.html', plot_url=plot_url, num_regions = num_regions)
     
+# feature 9
+@app.route('/search_by_actor_and_director', methods=['GET', 'POST'])
+def search_by_actor_and_director():
+    results = []
+    if request.method == 'POST':
+        actor_name = request.form['actor_name']
+        director_name = request.form['director_name']
+        sql_path = 'SQL/Feature9_Actor_Director_Collaboration_Tracker.sql'
+        with open(sql_path, 'r') as file:
+            query = file.read()
+        result = db.session.execute(text(query), {'actor': actor_name, 'director': director_name})
+        results = result.fetchall()
+        
+    print(results)
+        
+    return render_template('search_by_actor_and_director.html', results=results)
 
 if __name__ == "__main__":
     app.run(debug=True)
